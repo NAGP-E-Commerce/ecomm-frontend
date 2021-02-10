@@ -1,197 +1,43 @@
-<!-- Sidebar/menu -->
-<nav class="therichpost-sidebar therichpost-bar-block therichpost-white therichpost-collapse therichpost-top"
-  style="z-index:3;width:250px" id="mySidebar">
-  <div class="therichpost-container therichpost-display-container therichpost-padding-16">
-    <i (click)="therichpost_close()"
-      class="fa fa-remove therichpost-hide-large therichpost-button therichpost-display-topright"></i>
-    <h3 class="therichpost-wide"><b>Therichpost</b></h3>
-  </div>
-  <div class="therichpost-padding-64 therichpost-large therichpost-text-grey" style="font-weight:bold">
-    <a href="#" class="therichpost-bar-item therichpost-button">Shirts</a>
-    <a href="#" class="therichpost-bar-item therichpost-button">Dresses</a>
-    <a href="javascript:void(0)" class="therichpost-button therichpost-block therichpost-left-align" id="myBtn">
-      Jeans
-    </a>
-
-    <a href="#" class="therichpost-bar-item therichpost-button">Jackets</a>
-    <a href="#" class="therichpost-bar-item therichpost-button">Gymwear</a>
-    <a href="#" class="therichpost-bar-item therichpost-button">Blazers</a>
-    <a href="#" class="therichpost-bar-item therichpost-button">Shoes</a>
-  </div>
-  <a href="#footer" class="therichpost-bar-item therichpost-button therichpost-padding">Contact</a>
-  <a href="javascript:void(0)" class="therichpost-bar-item therichpost-button therichpost-padding"
-    onclick="document.getElementById('newsletter').style.display='block'">Newsletter</a>
-  <a href="#footer" class="therichpost-bar-item therichpost-button therichpost-padding">Subscribe</a>
-</nav>
-
-<!-- Top menu on small screens -->
-<header class="therichpost-bar therichpost-top therichpost-hide-large therichpost-black therichpost-xlarge">
-  <div class="therichpost-bar-item therichpost-padding-24 therichpost-wide">LOGO</div>
-  <a href="javascript:void(0)" class="therichpost-bar-item therichpost-button therichpost-padding-24 therichpost-right"
-    (click)="therichpost_open()"><i class="fa fa-bars"></i></a>
-</header>
-
-<!-- Overlay effect when opening sidebar on small screens -->
-<div class="therichpost-overlay therichpost-hide-large" (click)="therichpost_close()" style="cursor:pointer"
-  title="close side menu" id="myOverlay"></div>
-
+<app-navbar></app-navbar>
 <!-- !PAGE CONTENT! -->
 <div class="therichpost-main" style="margin-left:250px">
-
-  <!-- Push down content on small screens -->
-  <div class="therichpost-hide-large" style="margin-top:83px"></div>
-
-  <!-- Top header -->
-  <header class="therichpost-container therichpost-xlarge">
-    <p class="therichpost-left">Jeans</p>
-    <p class="therichpost-right">
-      <i class="fa fa-shopping-cart therichpost-margin-right"></i>
-      <i class="fa fa-search"></i>
-    </p>
-  </header>
-
-  <!-- Image header -->
-  <div class="therichpost-display-container therichpost-container">
-    <img src="assets/shopimages/jeans.jpg" alt="Jeans" style="width:100%">
-    <div class="therichpost-display-topleft therichpost-text-white" style="padding:24px 48px">
-      <h1 class="therichpost-jumbo therichpost-hide-small">New arrivals</h1>
-      <h1 class="therichpost-hide-large therichpost-hide-medium">New arrivals</h1>
-      <h1 class="therichpost-hide-small">COLLECTION 2016</h1>
-      <p><a href="#jeans" class="therichpost-button therichpost-black therichpost-padding-large therichpost-large">SHOP
-          NOW</a></p>
-    </div>
-  </div>
-
-  <div class="therichpost-container therichpost-text-grey" id="jeans">
-    <p>8 items</p>
-  </div>
-
-  <!-- Product grid -->
-  <div class="therichpost-row therichpost-grayscale">
-    <div class="therichpost-col l3 s6">
-      <div class="therichpost-container">
-        <img src="assets/shopimages/jeans1.jpg" style="width:100%">
-        <p>Ripped Skinny Jeans<br><b>$24.99</b></p>
-      </div>
-      <div class="therichpost-container">
-        <img src="assets/shopimages/jeans2.jpg" style="width:100%">
-        <p>Mega Ripped Jeans<br><b>$19.99</b></p>
-      </div>
-    </div>
-
-    <div class="therichpost-col l3 s6">
-      <div class="therichpost-container">
-        <div class="therichpost-display-container">
-          <img src="assets/shopimages/jeans2.jpg" style="width:100%">
-          <span class="therichpost-tag therichpost-display-topleft">New</span>
-          <div class="therichpost-display-middle therichpost-display-hover">
-            <button class="therichpost-button therichpost-black">Buy now <i class="fa fa-shopping-cart"></i></button>
-          </div>
-        </div>
-        <p>Mega Ripped Jeans<br><b>$19.99</b></p>
-      </div>
-      <div class="therichpost-container">
-        <img src="assets/shopimages/jeans3.jpg" style="width:100%">
-        <p>Washed Skinny Jeans<br><b>$20.50</b></p>
-      </div>
-    </div>
-
-    <div class="therichpost-col l3 s6">
-      <div class="therichpost-container">
-        <img src="assets/shopimages/jeans3.jpg" style="width:100%">
-        <p>Washed Skinny Jeans<br><b>$20.50</b></p>
-      </div>
-      <div class="therichpost-container">
-        <div class="therichpost-display-container">
-          <img src="assets/shopimages/jeans4.jpg" style="width:100%">
-          <span class="therichpost-tag therichpost-display-topleft">Sale</span>
-          <div class="therichpost-display-middle therichpost-display-hover">
-            <button class="therichpost-button therichpost-black">Buy now <i class="fa fa-shopping-cart"></i></button>
-          </div>
-        </div>
-        <p>Vintage Skinny Jeans<br><b class="therichpost-text-red">$14.99</b></p>
-      </div>
-    </div>
-
-    <div class="therichpost-col l3 s6">
-      <div class="therichpost-container">
-        <img src="assets/shopimages/jeans4.jpg" style="width:100%">
-        <p>Vintage Skinny Jeans<br><b>$14.99</b></p>
-      </div>
-      <div class="therichpost-container">
-        <img src="assets/shopimages/jeans1.jpg" style="width:100%">
-        <p>Ripped Skinny Jeans<br><b>$24.99</b></p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Subscribe section -->
-  <div class="therichpost-container therichpost-black therichpost-padding-32">
-    <h1>Subscribe</h1>
-    <p>To get special offers and VIP treatment:</p>
-    <p><input class="therichpost-input therichpost-border" type="text" placeholder="Enter e-mail" style="width:100%">
-    </p>
-    <button type="button" class="therichpost-button therichpost-red therichpost-margin-bottom">Subscribe</button>
-  </div>
-
-  <!-- Footer -->
-  <footer class="therichpost-padding-64 therichpost-light-grey therichpost-small therichpost-center" id="footer">
-    <div class="therichpost-row-padding">
-      <div class="therichpost-col s4">
-        <h4>Contact</h4>
-        <p>Questions? Go ahead.</p>
-
-        <p><input class="therichpost-input therichpost-border" type="text" placeholder="Name" name="Name" required></p>
-        <p><input class="therichpost-input therichpost-border" type="text" placeholder="Email" name="Email" required>
-        </p>
-        <p><input class="therichpost-input therichpost-border" type="text" placeholder="Subject" name="Subject"
-            required></p>
-        <p><input class="therichpost-input therichpost-border" type="text" placeholder="Message" name="Message"
-            required></p>
-        <button type="submit" class="therichpost-button therichpost-block therichpost-black">Send</button>
-
-      </div>
-
-      <div class="therichpost-col s4">
-        <h4>About</h4>
-        <p><a href="#">About us</a></p>
-        <p><a href="#">We're hiring</a></p>
-        <p><a href="#">Support</a></p>
-        <p><a href="#">Find store</a></p>
-        <p><a href="#">Shipment</a></p>
-        <p><a href="#">Payment</a></p>
-        <p><a href="#">Gift card</a></p>
-        <p><a href="#">Return</a></p>
-        <p><a href="#">Help</a></p>
-      </div>
-
-      <div class="therichpost-col s4 therichpost-justify">
-        <h4>Store</h4>
-        <p><i class="fa fa-fw fa-map-marker"></i> Company Name</p>
-        <p><i class="fa fa-fw fa-phone"></i> 0044123123</p>
-        <p><i class="fa fa-fw fa-envelope"></i> ex@mail.com</p>
-        <h4>We accept</h4>
-        <p><i class="fa fa-fw fa-cc-amex"></i> Amex</p>
-        <p><i class="fa fa-fw fa-credit-card"></i> Credit Card</p>
-        <br>
-        <i class="fa fa-facebook-official therichpost-hover-opacity therichpost-large"></i>
-        <i class="fa fa-instagram therichpost-hover-opacity therichpost-large"></i>
-        <i class="fa fa-snapchat therichpost-hover-opacity therichpost-large"></i>
-        <i class="fa fa-pinterest-p therichpost-hover-opacity therichpost-large"></i>
-        <i class="fa fa-twitter therichpost-hover-opacity therichpost-large"></i>
-        <i class="fa fa-linkedin therichpost-hover-opacity therichpost-large"></i>
-      </div>
-    </div>
-  </footer>
-
-  <div class="therichpost-black therichpost-center therichpost-padding-24"><a href="https://therichpost.com/"
-      title="W3.CSS" target="_blank" class="therichpost-hover-opacity">therichpost.com</a></div>
-
+  <app-product-list></app-product-list>
+  <!-- Footer Component -->
+  <!-- <app-footer></app-footer> -->
   <!-- End page content -->
 </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- Newsletter Modal -->
-<div id="newsletter" class="therichpost-modal">
+<!-- <div id="newsletter" class="therichpost-modal">
   <div class="therichpost-modal-content therichpost-animate-zoom" style="padding:32px">
     <div class="therichpost-container therichpost-white therichpost-center">
       <i onclick="document.getElementById('newsletter').style.display='none'"
@@ -204,4 +50,4 @@
         onclick="document.getElementById('newsletter').style.display='none'">Subscribe</button>
     </div>
   </div>
-</div>
+</div> -->
