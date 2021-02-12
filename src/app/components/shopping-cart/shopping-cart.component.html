@@ -1,0 +1,19 @@
+Shopping cart Total: 
+<div class="row">
+</div>
+<br/>
+<div class="row">
+  <div class="small-12 columns">
+    <div class="" *ngFor="let cart1 of cart | async">
+      <div>
+        User Id:
+        <span class="text--red text--bold js-cart-total">{{this.cart1.userId}}</span>
+      </div>
+      <div>
+        Shopping cart Total:
+        <span class="text--red text--bold js-cart-total">{{this.cart1.grossTotal | currency:'GBP':true}}</span>
+      </div>
+     </div>
+  </div>
+</div>
+
