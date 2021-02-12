@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductService } from '../../services/product.service';
+import { ProductCategory } from '../../models/ProductCategory'
 
 @Component({
   selector: 'app-navbar',
@@ -7,13 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  productCategories: any = [];
+
+  constructor(public productService: ProductService) { }
 
   ngOnInit(): void {
+    console.log("here");
+    this.fetchProductCategories();
+    console.log("Categories -> " + this.productCategories);
   }
 
-   // Open and close sidebar
-   therichpost_open() {
+  fetchProductCategories() {
+    return this.productService.getProductCategories().subscribe((res: {}) => {
+      this.productCategories = res;
+    })
+  }
+
+  // Open and close sidebar
+  therichpost_open() {
     document.getElementById("mySidebar").style.display = "block";
     document.getElementById("myOverlay").style.display = "block";
   }
