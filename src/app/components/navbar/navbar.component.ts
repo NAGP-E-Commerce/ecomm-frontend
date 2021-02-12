@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { ProductService } from '../../services/product.service';
-import { ProductCategory } from '../../models/ProductCategory'
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
@@ -9,21 +7,11 @@ import { ProductCategory } from '../../models/ProductCategory'
 })
 export class NavbarComponent implements OnInit {
 
-  productCategories: any = [];
+  @Input() productCategories: any = [];
 
-  constructor(public productService: ProductService) { }
+  constructor() { }
 
-  ngOnInit(): void {
-    console.log("here");
-    this.fetchProductCategories();
-    console.log("Categories -> " + this.productCategories);
-  }
-
-  fetchProductCategories() {
-    return this.productService.getProductCategories().subscribe((res: {}) => {
-      this.productCategories = res;
-    })
-  }
+  ngOnInit(): void { }
 
   // Open and close sidebar
   therichpost_open() {

@@ -27,6 +27,14 @@ export class ProductService {
       )
   }
 
+  getProductCategoryByName(name: string): Observable<ProductCategory> {
+    return this.httpClient.get<ProductCategory>(this.endpoint + '/productcategory/' + name)
+      .pipe(
+        retry(1),
+        catchError(this.processError)
+      )
+  }
+
   processError(err) {
     let message = '';
     if (err.error instanceof ErrorEvent) {

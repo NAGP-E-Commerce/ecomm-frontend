@@ -4,19 +4,14 @@
     <div class="therichpost-container therichpost-display-container therichpost-padding-16">
         <i (click)="therichpost_close()"
             class="fa fa-remove therichpost-hide-large therichpost-button therichpost-display-topright"></i>
-        <h3 class="therichpost-wide"><b>Ecommerce Application</b></h3>
+        <h2 class="therichpost-wide"><b>AmCart</b></h2>
     </div>
     <div class="therichpost-padding-64 therichpost-large therichpost-text-grey" style="font-weight:bold">
-        <a href="#" class="therichpost-bar-item therichpost-button">Shirts</a>
-        <a href="#" class="therichpost-bar-item therichpost-button">Dresses</a>
-        <a href="javascript:void(0)" class="therichpost-button therichpost-block therichpost-left-align" id="myBtn">
+        <a *ngFor="let productCategory of productCategories" href="javascript:void(0)" [routerLink]="['/category', productCategory.name]" routerLinkActive="active"
+            class="therichpost-bar-item therichpost-button">{{productCategory.name}}</a>
+        <!-- <a href="javascript:void(0)" class="therichpost-button therichpost-block therichpost-left-align" id="myBtn">
             Jeans
-        </a>
-
-        <a href="#" class="therichpost-bar-item therichpost-button">Jackets</a>
-        <a href="#" class="therichpost-bar-item therichpost-button">Gymwear</a>
-        <a href="#" class="therichpost-bar-item therichpost-button">Blazers</a>
-        <a href="#" class="therichpost-bar-item therichpost-button">Shoes</a>
+        </a> -->
     </div>
     <!-- <a href="#footer" class="therichpost-bar-item therichpost-button therichpost-padding">Contact</a>
   <a href="javascript:void(0)" class="therichpost-bar-item therichpost-button therichpost-padding"

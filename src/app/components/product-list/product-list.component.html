@@ -1,9 +1,10 @@
 <!-- Push down content on small screens -->
+<div *ngIf="productCategory">
 <div class="therichpost-hide-large" style="margin-top:83px"></div>
 
 <!-- Top header -->
 <header class="therichpost-container therichpost-xlarge">
-    <p class="therichpost-left">Jeans</p>
+    <p class="therichpost-left">{{productCategory.name}}</p>
     <p class="therichpost-right">
         <i class="fa fa-shopping-cart therichpost-margin-right"></i>
         <i class="fa fa-search"></i>
@@ -11,7 +12,7 @@
 </header>
 
 <!-- Image header -->
-<div class="therichpost-display-container therichpost-container">
+<!-- <div class="therichpost-display-container therichpost-container">
     <img src="assets/shopimages/jeans.jpg" alt="Jeans" style="width:100%">
     <div class="therichpost-display-topleft therichpost-text-white" style="padding:24px 48px">
         <h1 class="therichpost-jumbo therichpost-hide-small">New arrivals</h1>
@@ -21,26 +22,26 @@
                 class="therichpost-button therichpost-black therichpost-padding-large therichpost-large">SHOP
                 NOW</a></p>
     </div>
-</div>
+</div> -->
 
 <div class="therichpost-container therichpost-text-grey" id="jeans">
-    <p>8 items</p>
+    <p>{{product.length}}</p>
 </div>
 
 <!-- Product grid -->
 <div class="therichpost-row therichpost-grayscale">
-    <div class="therichpost-col l3 s6">
+    <div class="therichpost-col l3 s6" *ngFor="let product of product">
         <div class="therichpost-container">
-            <img src="assets/shopimages/jeans1.jpg" style="width:100%">
-            <p>Ripped Skinny Jeans<br><b>$24.99</b></p>
+            <img [src]="product.primaryImageUrl" style="width:100%">
+            <span class="therichpost-tag therichpost-display-topleft" *ngIf="product.isNew">New</span>
+            <!-- <span class="therichpost-tag therichpost-display-topleft" *ngIf="product.isFeatured">Featured</span> -->
         </div>
-        <div class="therichpost-container">
-            <img src="assets/shopimages/jeans2.jpg" style="width:100%">
-            <p>Mega Ripped Jeans<br><b>$19.99</b></p>
-        </div>
+        <p>{{product.name}}<br><b>Rs. {{product.price}}</b></p>
+        <button class="therichpost-button therichpost-black">Buy now <i
+            class="fa fa-shopping-cart"></i></button>
     </div>
 
-    <div class="therichpost-col l3 s6">
+    <!-- <div class="therichpost-col l3 s6">
         <div class="therichpost-container">
             <div class="therichpost-display-container">
                 <img src="assets/shopimages/jeans2.jpg" style="width:100%">
@@ -85,5 +86,7 @@
             <img src="assets/shopimages/jeans1.jpg" style="width:100%">
             <p>Ripped Skinny Jeans<br><b>$24.99</b></p>
         </div>
-    </div>
+    </div> -->
+</div>
+
 </div>
