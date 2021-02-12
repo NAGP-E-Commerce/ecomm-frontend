@@ -1,7 +1,7 @@
-import { CartItem } from "./cart-item.model";
+import { CartEntry } from "./CartEntry";
 
-export class ShoppingCart {
-  public items: CartItem[] = new Array<CartItem>();
+export class Cart {
+  public items: CartEntry[] = new Array<CartEntry>();
   public grossTotal: number = 0;
   public itemsTotal: number = 0;
   public totalDiscount: number = 0;
@@ -12,7 +12,7 @@ export class ShoppingCart {
   public deliveryOptionId: string;
   public deliveryTotal: number = 0;
 
-  public updateFrom(src: ShoppingCart) {
+  public updateFrom(src: Cart) {
     this.items = src.items;
     this.grossTotal = src.grossTotal;
     this.itemsTotal = src.itemsTotal;

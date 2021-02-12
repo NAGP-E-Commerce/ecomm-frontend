@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { ShoppingCart } from "../models/shopping-cart.model";
+import { Cart } from "../models/Cart";
 import { retry, catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -8,8 +8,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class ShoppingCartService {
-  endpoint = 'http://localhost:8092/ct/cart/{cartId}?cartId=';
+export class CartService {
+  endpoint = 'http://localhost:8092/ct/cart/';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -19,8 +19,8 @@ export class ShoppingCartService {
     })
   }
 
-  getCartById(): Observable<ShoppingCart> {
-    return this.httpClient.get<ShoppingCart>(this.endpoint + '1')
+  getCartById(): Observable<Cart> {
+    return this.httpClient.get<Cart>(this.endpoint + '{cartId}?cartId=' + '1')
       .pipe(
         retry(1),
         catchError(this.processError)

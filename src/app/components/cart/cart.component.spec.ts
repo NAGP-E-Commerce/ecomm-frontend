@@ -1,32 +1,32 @@
 import { async, inject, TestBed } from "@angular/core/testing";
 import { CartItem } from "app/models/cart-item.model";
 import { Product } from "app/models/product.model";
-import { ShoppingCart } from "app/models/shopping-cart.model";
+import { Cart } from "app/models/cart.model";
 import { DeliveryOptionsDataService } from "app/services/delivery-options.service";
 import { ProductsDataService } from "app/services/products.service";
-import { ShoppingCartService } from "app/services/shopping-cart.service";
+import { CartService } from "app/services/cart.service";
 import { LocalStorageServie, StorageService } from "app/services/storage.service";
 import { Observable } from "rxjs/Observable";
 import { Observer } from "rxjs/Observer";
 import * as sinon from "sinon";
-import { ShoppingCartComponent } from "./shopping-cart.component";
+import { CartComponent } from "./cart.component";
 
-class MockShoppingCartService {
+class MockCartService {
   public unsubscriveCalled: boolean = false;
   public emptyCalled: boolean = false;
-  private subscriptionObservable: Observable<ShoppingCart>;
-  private subscriber: Observer<ShoppingCart>;
-  private cart: ShoppingCart = new ShoppingCart();
+  private subscriptionObservable: Observable<Cart>;
+  private subscriber: Observer<Cart>;
+  private cart: Cart = new Cart();
 
   public constructor() {
-    this.subscriptionObservable = new Observable<ShoppingCart>((observer: Observer<ShoppingCart>) => {
+    this.subscriptionObservable = new Observable<Cart>((observer: Observer<Cart>) => {
       this.subscriber = observer;
       observer.next(this.cart);
       return () => this.unsubscriveCalled = true;
     });
   }
 
-  public get(): Observable<ShoppingCart> {
+  public get(): Observable<Cart> {
     return this.subscriptionObservable;
   }
 
@@ -34,7 +34,7 @@ class MockShoppingCartService {
     this.emptyCalled = true;
   }
 
-  public dispatchCart(cart: ShoppingCart): void {
+  public dispatchCart(cart: Cart): void {
     this.cart = cart;
     if (this.subscriber) {
       this.subscriber.next(cart);
@@ -42,35 +42,35 @@ class MockShoppingCartService {
   }
 }
 
-describe("ShoppingCartComponent", () => {
+describe("CartComponent", () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        ShoppingCartComponent
+        CartComponent
       ],
       providers: [
         { provide: ProductsDataService, useValue: sinon.createStubInstance(ProductsDataService) },
         { provide: DeliveryOptionsDataService, useValue: sinon.createStubInstance(DeliveryOptionsDataService) },
         { provide: StorageService, useClass: LocalStorageServie },
-        { provide: ShoppingCartService, useClass: MockShoppingCartService }
+        { provide: CartService, useClass: MockCartService }
       ]
     }).compileComponents();
   }));
 
   it("should create the component", async(() => {
-    const fixture = TestBed.createComponent(ShoppingCartComponent);
+    const fixture = TestBed.createComponent(CartComponent);
     const component = fixture.debugElement.componentInstance;
     expect(component).toBeTruthy();
   }));
 
   it("should render gross total of shopping cart",
-    async(inject([ShoppingCartService], (service: MockShoppingCartService) => {
-      const fixture = TestBed.createComponent(ShoppingCartComponent);
+    async(inject([CartService], (service: MockCartService) => {
+      const fixture = TestBed.createComponent(CartComponent);
       fixture.detectChanges();
       const compiled = fixture.debugElement.nativeElement;
       expect(compiled.querySelector(".js-cart-total").textContent).toContain("£0.00");
 
-      const newCart = new ShoppingCart();
+      const newCart = new Cart();
       newCart.grossTotal = 1.5;
       service.dispatchCart(newCart);
       fixture.detectChanges();
@@ -78,14 +78,14 @@ describe("ShoppingCartComponent", () => {
     })));
 
   it("should empty the cart when empty shopping cart button pressed",
-    async(inject([ShoppingCartService], (service: MockShoppingCartService) => {
-      const newCart = new ShoppingCart();
+    async(inject([CartService], (service: MockCartService) => {
+      const newCart = new Cart();
       const cartItem = new CartItem();
       cartItem.quantity = 1;
       newCart.grossTotal = 1.5;
       newCart.items = [cartItem];
       service.dispatchCart(newCart);
-      const fixture = TestBed.createComponent(ShoppingCartComponent);
+      const fixture = TestBed.createComponent(CartComponent);
       fixture.detectChanges();
       fixture.debugElement.nativeElement.querySelector(".js-btn-empty-cart").click();
       expect(service.emptyCalled).toBeTruthy();

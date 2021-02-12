@@ -8,7 +8,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
-import {ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import {CartComponent } from './components/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +17,7 @@ import {ShoppingCartComponent } from './components/shopping-cart/shopping-cart.c
     FooterComponent,
     ProductDetailComponent,
     ProductListComponent,
-    ShoppingCartComponent
+    CartComponent
   ],
   imports: [
     BrowserModule,

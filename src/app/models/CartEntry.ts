@@ -1,4 +1,4 @@
-export class CartItem {
+export class CartEntry {
   public productName: string;
   public productCode: string;
   public quantity: number = 0;
