@@ -20,7 +20,7 @@ export class CartService {
   }
 
   getCartById(): Observable<Cart> {
-    return this.httpClient.get<Cart>(this.endpoint + '{cartId}?cartId=' + '1')
+    return this.httpClient.get<Cart>(this.endpoint + '1')
       .pipe(
         retry(1),
         catchError(this.processError)

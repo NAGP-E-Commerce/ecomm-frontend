@@ -1,19 +1,39 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+    aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+    <a class="navbar-brand therichpost-bar-item " href="#">AmCart</a>
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0 mr-2" type="submit">Search</button>
+      <a href="javascript:void(0)" [routerLink]="['/cart']" class="text-dark"><i class="fa" style="font-size:24px">&#xf07a;</i>
+      <span class='badge badge-warning' id='lblCartCount'> 5 </span></a>
+    </form>
+  </div>
+</nav>
+
 <!-- Sidebar/menu -->
-<nav class="therichpost-sidebar therichpost-bar-block therichpost-white therichpost-collapse therichpost-top"
-    style="z-index:3;width:250px" id="mySidebar">
-    <div class="therichpost-container therichpost-display-container therichpost-padding-16">
-        <i (click)="therichpost_close()"
-            class="fa fa-remove therichpost-hide-large therichpost-button therichpost-display-topright"></i>
-        <h2 class="therichpost-wide"><b>AmCart</b></h2>
-    </div>
-    <div class="therichpost-padding-64 therichpost-large therichpost-text-grey" style="font-weight:bold">
-        <a *ngFor="let productCategory of productCategories" href="javascript:void(0)" [routerLink]="['/category', productCategory.name]" routerLinkActive="active"
-            class="therichpost-bar-item therichpost-button">{{productCategory.name}}</a>
-        <!-- <a href="javascript:void(0)" class="therichpost-button therichpost-block therichpost-left-align" id="myBtn">
+
+<nav class="therichpost-sidebar therichpost-bar-block therichpost-white therichpost-collapse"
+  style="z-index:3;width:250px" id="mySidebar">
+  <div class="therichpost-container therichpost-display-container therichpost-padding-16">
+    <i (click)="therichpost_close()"
+      class="fa fa-remove therichpost-hide-large therichpost-button therichpost-display-topright"></i>
+    <!-- <h2 class="therichpost-wide"><b>AmCart</b></h2> -->
+  </div>
+  <div class="therichpost-padding-64 therichpost-large therichpost-text-grey" style="font-weight:bold">
+    <a *ngFor="let productCategory of productCategories" href="javascript:void(0)"
+      [routerLink]="['/category', productCategory.name]" routerLinkActive="active"
+      class="therichpost-bar-item therichpost-button">{{productCategory.name}}</a>
+    <!-- <a href="javascript:void(0)" class="therichpost-button therichpost-block therichpost-left-align" id="myBtn">
             Jeans
         </a> -->
-    </div>
-    <!-- <a href="#footer" class="therichpost-bar-item therichpost-button therichpost-padding">Contact</a>
+  </div>
+  <!-- <a href="#footer" class="therichpost-bar-item therichpost-button therichpost-padding">Contact</a>
   <a href="javascript:void(0)" class="therichpost-bar-item therichpost-button therichpost-padding"
     onclick="document.getElementById('newsletter').style.display='block'">Newsletter</a>
   <a href="#footer" class="therichpost-bar-item therichpost-button therichpost-padding">Subscribe</a> -->
@@ -22,13 +42,12 @@
 
 
 <!-- Top menu on small screens -->
-<header class="therichpost-bar therichpost-top therichpost-hide-large therichpost-black therichpost-xlarge">
-    <div class="therichpost-bar-item therichpost-padding-24 therichpost-wide">LOGO</div>
-    <a href="javascript:void(0)"
-        class="therichpost-bar-item therichpost-button therichpost-padding-24 therichpost-right"
-        (click)="therichpost_open()"><i class="fa fa-bars"></i></a>
+<header class="therichpost-bar therichpost-top therichpost-hide-large therichpost-grey therichpost-xlarge">
+  <div class="therichpost-bar-item therichpost-padding-24 therichpost-wide">AmCart</div>
+  <a href="javascript:void(0)" class="therichpost-bar-item therichpost-button therichpost-padding-24 therichpost-right"
+    (click)="therichpost_open()"><i class="fa fa-bars"></i></a>
 </header>
 
 <!-- Overlay effect when opening sidebar on small screens -->
 <div class="therichpost-overlay therichpost-hide-large" (click)="therichpost_close()" style="cursor:pointer"
-    title="close side menu" id="myOverlay"></div>
+  title="close side menu" id="myOverlay"></div>
