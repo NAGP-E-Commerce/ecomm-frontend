@@ -9,6 +9,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class CartService {
+
+  cartId = '1';
   endpoint = 'http://localhost:8092/ct/cart/';
 
   constructor(private httpClient: HttpClient) { }
@@ -20,11 +22,22 @@ export class CartService {
   }
 
   getCartById(): Observable<Cart> {
-    return this.httpClient.get<Cart>(this.endpoint + '1')
+    return this.httpClient.get<Cart>(this.endpoint + this.cartId)
       .pipe(
         retry(1),
         catchError(this.processError)
       );
+  }
+
+  addProductToCart(productCode: string): Observable<Cart> {
+    return this.httpClient.post<Cart>(this.endpoint + 'entry', {
+      "cartId": this.cartId,
+      "productCode": productCode,
+      "quantity": 1
+    }).pipe(
+      retry(1),
+      catchError(this.processError)
+    );
   }
 
   processError(err) {

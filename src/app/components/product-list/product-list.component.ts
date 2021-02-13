@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -12,13 +13,17 @@ export class ProductListComponent implements OnInit {
   productCategory: any;
   product: any;
 
-  constructor(private route: ActivatedRoute, private productService: ProductService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private productService: ProductService,
+    private cartService: CartService
+  ) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(routeParams => {
       console.log(routeParams);
       var categoryName = routeParams['categoryName'];
-      if(categoryName == null || categoryName == undefined) {
+      if (categoryName == null || categoryName == undefined) {
         categoryName = 'Phone';
       }
       this.fetchProductCategoryByName(categoryName);
@@ -30,6 +35,11 @@ export class ProductListComponent implements OnInit {
       this.productCategory = res;
       this.product = this.productCategory.product;
     })
+  }
+
+
+  addProductToCart(productCode: string) {
+    return this.cartService.addProductToCart(productCode).subscribe((res: {}) => { })
   }
 
 }

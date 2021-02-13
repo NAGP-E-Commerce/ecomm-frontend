@@ -39,7 +39,7 @@
                 <!-- <span class="therichpost-tag therichpost-display-topleft" *ngIf="product.isFeatured">Featured</span> -->
             </div>
             <p>{{product.name}}<br><b>Rs. {{product.price}}</b></p>
-            <button class="therichpost-button therichpost-black">Buy now <i class="fa fa-cart"></i></button>
+            <button class="therichpost-button therichpost-black" (click)="addProductToCart(product.productId)">Buy now <i class="fa fa-cart"></i></button>
         </div>
 
         <!-- <div class="therichpost-col l3 s6">

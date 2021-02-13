@@ -18,9 +18,7 @@ export class CartComponent implements OnInit {
 
   getCartById() {
     return this.cartService.getCartById().subscribe((res: {}) => {
-      debugger
       this.cart = res;
     })
   }
-
 }
