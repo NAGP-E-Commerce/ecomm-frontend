@@ -1,18 +1,20 @@
 <!-- Push down content on small screens -->
 <div *ngIf="productCategory">
-<div class="therichpost-hide-large" style="margin-top:83px"></div>
+    <div class="therichpost-hide-large" style="margin-top:83px"></div>
 
-<!-- Top header -->
-<header class="therichpost-container therichpost-xlarge">
-    <p class="therichpost-left">{{productCategory.name}}</p>
-    <p class="therichpost-right">
-        <i class="fa fa-cart therichpost-margin-right"></i>
-        <i class="fa fa-search"></i>
-    </p>
-</header>
+    <!-- Top header -->
+    <header class="therichpost-container therichpost-xlarge">
+        <p class="therichpost-left">{{productCategory.name}}</p>
+        <p class="therichpost-right">
+            <a href="javascript:void(0)" [routerLink]="['/cart']"><i
+                    class="fa fa-shopping-cart therichpost-margin-right"></i>
+            </a>
+            <i class="fa fa-search"></i>
+        </p>
+    </header>
 
-<!-- Image header -->
-<!-- <div class="therichpost-display-container therichpost-container">
+    <!-- Image header -->
+    <!-- <div class="therichpost-display-container therichpost-container">
     <img src="assets/shopimages/jeans.jpg" alt="Jeans" style="width:100%">
     <div class="therichpost-display-topleft therichpost-text-white" style="padding:24px 48px">
         <h1 class="therichpost-jumbo therichpost-hide-small">New arrivals</h1>
@@ -24,24 +26,23 @@
     </div>
 </div> -->
 
-<div class="therichpost-container therichpost-text-grey" id="jeans">
-    <p>Size {{product.length}}</p>
-</div>
-
-<!-- Product grid -->
-<div class="therichpost-row therichpost-grayscale">
-    <div class="therichpost-col l3 s6" *ngFor="let product of product">
-        <div class="therichpost-container">
-            <img [src]="product.primaryImageUrl" style="width:100%">
-            <span class="therichpost-tag therichpost-display-topleft" *ngIf="product.isNew">New</span>
-            <!-- <span class="therichpost-tag therichpost-display-topleft" *ngIf="product.isFeatured">Featured</span> -->
-        </div>
-        <p>{{product.name}}<br><b>Rs. {{product.price}}</b></p>
-        <button class="therichpost-button therichpost-black">Buy now <i
-            class="fa fa-cart"></i></button>
+    <div class="therichpost-container therichpost-text-grey" id="jeans">
+        <p>Size {{product.length}}</p>
     </div>
 
-    <!-- <div class="therichpost-col l3 s6">
+    <!-- Product grid -->
+    <div class="therichpost-row therichpost-grayscale">
+        <div class="therichpost-col l3 s6" *ngFor="let product of product">
+            <div class="therichpost-container">
+                <img [src]="product.primaryImageUrl" style="width:100%">
+                <span class="therichpost-tag therichpost-display-topleft" *ngIf="product.isNew">New</span>
+                <!-- <span class="therichpost-tag therichpost-display-topleft" *ngIf="product.isFeatured">Featured</span> -->
+            </div>
+            <p>{{product.name}}<br><b>Rs. {{product.price}}</b></p>
+            <button class="therichpost-button therichpost-black">Buy now <i class="fa fa-cart"></i></button>
+        </div>
+
+        <!-- <div class="therichpost-col l3 s6">
         <div class="therichpost-container">
             <div class="therichpost-display-container">
                 <img src="assets/shopimages/jeans2.jpg" style="width:100%">
@@ -87,6 +88,6 @@
             <p>Ripped Skinny Jeans<br><b>$24.99</b></p>
         </div>
     </div> -->
-</div>
+    </div>
 
 </div>
