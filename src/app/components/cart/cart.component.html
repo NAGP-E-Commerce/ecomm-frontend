@@ -1,5 +1,4 @@
-{{cart | json}}
-<div class="container mb-4">
+<div class="container mb-4" *ngIf="cart">
   <div class="row">
     <div class="col-12">
       <div class="table-responsive">
@@ -15,28 +14,12 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
-              <td>Product Name Dada</td>
+            <tr *ngFor="let entry of cart.items">
+              <td><img [src]="entry.imageUrl" style="width: 50px;height: 50px;"/> </td>
+              <td>{{entry.productName}}</td>
               <td>In stock</td>
-              <td><input class="form-control" type="text" value="1" /></td>
-              <td class="text-right">124,90 €</td>
-              <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
-            </tr>
-            <tr>
-              <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
-              <td>Product Name Toto</td>
-              <td>In stock</td>
-              <td><input class="form-control" type="text" value="1" /></td>
-              <td class="text-right">33,90 €</td>
-              <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
-            </tr>
-            <tr>
-              <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
-              <td>Product Name Titi</td>
-              <td>In stock</td>
-              <td><input class="form-control" type="text" value="1" /></td>
-              <td class="text-right">70,00 €</td>
+              <td><input class="form-control" type="text" [value]="entry.quantity" /></td>
+              <td class="text-right">Rs. {{entry.price}}</td>
               <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
             </tr>
             <tr>
@@ -45,7 +28,7 @@
               <td></td>
               <td></td>
               <td>Sub-Total</td>
-              <td class="text-right">255,90 €</td>
+              <td class="text-right">Rs. {{cart.grossTotal}}</td>
             </tr>
             <tr>
               <td></td>
@@ -53,7 +36,7 @@
               <td></td>
               <td></td>
               <td>Shipping</td>
-              <td class="text-right">6,90 €</td>
+              <td class="text-right">Rs. {{cart.tax}}</td>
             </tr>
             <tr>
               <td></td>
@@ -61,7 +44,7 @@
               <td></td>
               <td></td>
               <td><strong>Total</strong></td>
-              <td class="text-right"><strong>346,90 €</strong></td>
+              <td class="text-right"><strong>Rs. {{cart.itemsTotal}}</strong></td>
             </tr>
           </tbody>
         </table>
