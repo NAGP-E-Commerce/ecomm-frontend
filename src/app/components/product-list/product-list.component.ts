@@ -39,7 +39,9 @@ export class ProductListComponent implements OnInit {
 
 
   addProductToCart(productCode: string) {
-    return this.cartService.addProductToCart(productCode).subscribe((res: {}) => { })
+    return this.cartService.addProductToCart(productCode).subscribe((res: {}) => {
+        alert(productCode + " added to Cart.");
+     })
   }
 
 }

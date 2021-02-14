@@ -21,4 +21,11 @@ export class CartComponent implements OnInit {
       this.cart = res;
     })
   }
+
+  removeProductFromCart(productCode: string) {
+    return this.cartService.removeProductFromCart(productCode).subscribe((res: {}) => {
+        alert(productCode + " removed from Cart.");
+        this.getCartById();
+     })
+  }
 }

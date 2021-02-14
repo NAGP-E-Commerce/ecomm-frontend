@@ -40,6 +40,17 @@ export class CartService {
     );
   }
 
+  removeProductFromCart(productCode: string): Observable<Cart> {
+    return this.httpClient.put<Cart>(this.endpoint + 'entry', {
+      "cartId": this.cartId,
+      "productCode": productCode,
+      "quantity": 1
+    }).pipe(
+      retry(1),
+      catchError(this.processError)
+    );
+  }
+
   processError(err) {
     let message = '';
     if (err.error instanceof ErrorEvent) {
