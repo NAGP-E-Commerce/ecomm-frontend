@@ -25,7 +25,8 @@
             ],
             "styles": [
               "src/styles.css",
-              "src/assets/styles/therichpost.css"
+              "src/assets/styles/therichpost.css",
+              "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": []
           },

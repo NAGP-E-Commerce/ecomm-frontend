@@ -29,10 +29,10 @@ export class CartService {
       );
   }
 
-  addProductToCart(productCode: string): Observable<Cart> {
+  addProductToCart(productId: string): Observable<Cart> {
     return this.httpClient.post<Cart>(this.endpoint + 'entry', {
       "cartId": this.cartId,
-      "productCode": productCode,
+      "productId": productId,
       "quantity": 1
     }).pipe(
       retry(1),
@@ -40,10 +40,10 @@ export class CartService {
     );
   }
 
-  removeProductFromCart(productCode: string): Observable<Cart> {
+  removeProductFromCart(productId: string): Observable<Cart> {
     return this.httpClient.put<Cart>(this.endpoint + 'entry', {
       "cartId": this.cartId,
-      "productCode": productCode,
+      "productId": productId,
       "quantity": 1
     }).pipe(
       retry(1),

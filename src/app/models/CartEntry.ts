@@ -1,6 +1,6 @@
 export class CartEntry {
   public productName: string;
-  public productCode: string;
+  public productId: string;
   public quantity: number = 0;
   public price: number = 0;
   public totalDiscount: number = 0;

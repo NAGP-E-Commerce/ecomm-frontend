@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { ToastrService } from "ngx-toastr";
 import { CartService } from "../../services/cart.service";
 
 
@@ -9,7 +10,10 @@ import { CartService } from "../../services/cart.service";
 })
 export class CartComponent implements OnInit {
   cart: any;
-  constructor(private cartService: CartService) { }
+  constructor(
+    private cartService: CartService,
+    private toastrService: ToastrService
+    ) { }
 
 
   ngOnInit(): void {
@@ -22,9 +26,9 @@ export class CartComponent implements OnInit {
     })
   }
 
-  removeProductFromCart(productCode: string) {
-    return this.cartService.removeProductFromCart(productCode).subscribe((res: {}) => {
-        alert(productCode + " removed from Cart.");
+  removeProductFromCart(productId: string) {
+    return this.cartService.removeProductFromCart(productId).subscribe((res: {}) => {
+        this.toastrService.info(productId + " removed from Cart.");
         this.getCartById();
      })
   }
