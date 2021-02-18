@@ -39,7 +39,21 @@
                 <!-- <span class="therichpost-tag therichpost-display-topleft" *ngIf="product.isFeatured">Featured</span> -->
             </div>
             <p>{{product.name}}<br><b>Rs. {{product.price}}</b></p>
-            <button class="therichpost-button therichpost-black" (click)="addProductToCart(product.productId)">Buy now <i class="fa fa-cart"></i></button>
+            <div *ngIf="product.status == 'INSTOCK'">
+                <div class="therichpost-text-green"><b>In Stock</b></div>
+            </div>
+            <div *ngIf="product.status == 'OUTOFSTOCK'">
+                <div class="therichpost-text-red"><b>Out of Stock</b></div>
+            </div>
+            <div *ngIf="product.status == 'UNAVAILABLE'">
+                <div class="therichpost-text-red"><b>Unavailable</b></div>
+            </div>
+            <div *ngIf="product.status == 'LOWSTOCK'">
+                <div class="therichpost-text-primary"><b>Low Stock</b></div>
+            </div>
+            <button class="therichpost-button therichpost-black"
+                ng-disabled="product.status == 'UNAVAILABLE' || product.status == 'OUTOFSTOCK'"
+                (click)="addProductToCart(product.productId)">Add To Cart<i class="fa fa-cart"></i></button>
         </div>
 
         <!-- <div class="therichpost-col l3 s6">

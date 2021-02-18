@@ -42,7 +42,11 @@ export class ProductListComponent implements OnInit {
 
   addProductToCart(productId: string) {
     return this.cartService.addProductToCart(productId).subscribe((res: {}) => {
-      this.toastrService.success(productId + " added to Cart.");
+      if(res == null || res == undefined) {
+        this.toastrService.error(productId + " can not add to cart due to Low Stock.");
+      } else {
+        this.toastrService.success(productId + " added to Cart.");
+      }
      })
   }
 
