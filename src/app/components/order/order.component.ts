@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute, Router } from "@angular/router";
+import { CartService } from "../../services/cart.service";
 
 @Component({
   selector: 'app-order',
@@ -7,9 +9,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrderComponent implements OnInit {
 
-  constructor() { }
+  cartId = null;
+  order: any;
+  constructor(
+    private cartService: CartService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) { }
+
 
   ngOnInit(): void {
+    this.route.params.subscribe(routeParams => {
+      console.log(routeParams);
+      this.cartId = routeParams['cartId'];
+      this.getOrderById();
+    });
   }
 
+  getOrderById() {
+    return this.cartService.getCartById(this.cartId).subscribe((res: {}) => {
+      this.order = res;
+    })
+  }
+
+  continueShopping() {
+    this.router.navigateByUrl('/category/Cloth');
+  }
 }

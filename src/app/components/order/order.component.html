@@ -1,1 +1,86 @@
-<p>order works!</p>
+<div class="container mb-4" *ngIf="order">
+    <div class="row">
+        <div class="col-12 text-success">
+            <br>
+            <br>
+            <h3>Your Order has been placed successfully.</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="table-responsive">
+                <br><br>
+                <table class="table borderless">
+                    <thead class="table-secondary bold">
+                        <tr>
+                            <th scope="col"> </th>
+                            <th scope="col">Product</th>
+                            <th scope="col">Available</th>
+                            <th scope="col" class="text-center">Quantity</th>
+                            <th scope="col" class="text-right">Price</th>
+                            <th> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let entry of order.items">
+                            <td><img [src]="entry.imageUrl" style="width: 50px;height: 50px;" /> </td>
+                            <td>{{entry.productName}}</td>
+                            <td>In stock</td>
+                            <td class="text-center">{{entry.quantity}}</td>
+                            <td class="text-right">Rs. {{entry.price}}</td>
+                            <td class="text-right"> </td>
+                        </tr>
+
+
+
+                        <tr class="">
+                            <td colspan="6">&nbsp;</td>
+                        </tr>
+                        <tr class=" text-center" *ngIf="order.items.length == 0">
+                            <td colspan="6">Order does not have any product</td>
+                        </tr>
+                        <tr class="">
+                            <td colspan="6">&nbsp;</td>
+                        </tr>
+
+
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Sub-Total</td>
+                            <td class="text-right">Rs. {{order.grossTotal}}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Shipping</td>
+                            <td class="text-right">Rs. {{order.tax}}</td>
+                        </tr>
+                        <tr class="table-secondary">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><strong>Total</strong></td>
+                            <td class="text-right"><strong>Rs. {{order.itemsTotal}}</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col mb-2">
+            <div class="row">
+                <div class="col-sm-12  col-md-3"></div>
+                <div class="col-sm-12  col-md-3"></div>
+                <div class="col-sm-12  col-md-3"></div>
+                <div class="col-sm-12 col-md-3 text-right">
+                    <button class="btn btn-block btn-success" (click)="continueShopping()">Continue Shopping</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

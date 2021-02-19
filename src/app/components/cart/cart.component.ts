@@ -50,10 +50,11 @@ export class CartComponent implements OnInit {
     this.orderService.placeOrder(cartId).subscribe((res: {}) => {
       if (res == null || res == undefined || res == false) {
         this.toastrService.error("Order can not be placed with cartId " + cartId);
+        this.getCartById();
       } else {
         this.toastrService.success("Order placed with cartId " + cartId);
+        this.router.navigateByUrl('/order/' + cartId);
       }
-      this.getCartById();
     })
   }
 

@@ -20,8 +20,8 @@ export class CartService {
     })
   }
 
-  getCartById(): Observable<Cart> {
-    return this.httpClient.get<Cart>(this.endpoint + this.getCartIdFromLocalStorage())
+  getCartById(cartId): Observable<Cart> {
+    return this.httpClient.get<Cart>(this.endpoint + cartId)
       .pipe(
         retry(1),
         catchError(this.processError)

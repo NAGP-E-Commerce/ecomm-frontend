@@ -12,6 +12,7 @@ export class AppComponent {
   title = 'ecomm-frontend';
 
   productCategories: any = [];
+  cart: any;
 
   constructor(private cartService: CartService, private productService: ProductService) { }
 
@@ -22,9 +23,9 @@ export class AppComponent {
 
   getCartByUserId(userId) {
     return this.cartService.getCartByUserId(userId).subscribe((res: {}) => {
-      var cart: any = res;
-      localStorage.setItem("userId", cart.userId);
-      localStorage.setItem("cartId", cart.id);
+      this.cart = res;
+      localStorage.setItem("userId", this.cart.userId);
+      localStorage.setItem("cartId", this.cart.id);
     })
   }
 

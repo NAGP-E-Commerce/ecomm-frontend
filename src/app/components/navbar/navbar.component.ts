@@ -9,6 +9,8 @@ export class NavbarComponent implements OnInit {
 
   @Input() productCategories: any = [];
 
+  @Input() cart = null;
+
   constructor() { }
 
   ngOnInit(): void { }

@@ -19,7 +19,7 @@
               <td><img [src]="entry.imageUrl" style="width: 50px;height: 50px;"/> </td>
               <td>{{entry.productName}}</td>
               <td>In stock</td>
-              <td><input class="form-control" type="text" [value]="entry.quantity" /></td>
+              <td class="text-center">{{entry.quantity}}</td>
               <td class="text-right">Rs. {{entry.price}}</td>
               <td class="text-right"><button class="btn btn-sm btn-danger" (click)="removeProductFromCart(entry.productId)"><i class="fa fa-trash"></i> </button> </td>
             </tr>
@@ -67,11 +67,13 @@
     </div>
     <div class="col mb-2">
       <div class="row">
-        <div class="col-sm-12  col-md-6">
-          <button class="btn btn-block btn-light" (click)="continueShopping()">Continue Shopping</button>
+        <div class="col-sm-12  col-md-3">
+          <button class="btn btn-outline-secondary" (click)="continueShopping()">Continue Shopping</button>
         </div>
-        <div class="col-sm-12 col-md-6 text-right">
-          <button class="btn btn-block btn-success" (click)="placeOrder()">Checkout</button>
+        <div class="col-sm-12  col-md-3"></div>
+        <div class="col-sm-12  col-md-3"></div>
+        <div class="col-sm-12 col-md-3 text-right">
+          <button class="btn btn-block btn-success" (click)="placeOrder()">Place Order</button>
         </div>
       </div>
     </div>

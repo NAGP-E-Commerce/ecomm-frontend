@@ -11,7 +11,7 @@
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-success my-2 my-sm-0 mr-2" type="submit">Search</button>
       <a href="javascript:void(0)" [routerLink]="['/cart']" class="text-dark"><i class="fa" style="font-size:24px">&#xf07a;</i>
-      <span class='badge badge-warning' id='lblCartCount'> 5 </span></a>
+      <span class='badge badge-warning' id='lblCartCount' *ngIf="cart"> {{cart.items.length}} </span></a>
     </form>
   </div>
 </nav>
