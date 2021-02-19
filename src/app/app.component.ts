@@ -1,6 +1,7 @@
 import { Component, Inject, Injectable, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
 import { ProductService } from './services/product.service';
+import { CartService } from './services/cart.service';
+import { Cart } from './models/Cart';
 
 @Component({
   selector: 'app-root',
@@ -12,10 +13,19 @@ export class AppComponent {
 
   productCategories: any = [];
 
-  constructor(@Inject(DOCUMENT) private document: Document, private productService: ProductService) { }
+  constructor(private cartService: CartService, private productService: ProductService) { }
 
   ngOnInit(): void {
     this.fetchProductCategories();
+    this.getCartByUserId("anonymous")
+  }
+
+  getCartByUserId(userId) {
+    return this.cartService.getCartByUserId(userId).subscribe((res: {}) => {
+      var cart: any = res;
+      localStorage.setItem("userId", cart.userId);
+      localStorage.setItem("cartId", cart.id);
+    })
   }
 
   fetchProductCategories() {

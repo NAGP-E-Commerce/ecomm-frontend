@@ -10,7 +10,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class CartService {
 
-  cartId = '1';
   endpoint = 'http://localhost:8092/ct/cart/';
 
   constructor(private httpClient: HttpClient) { }
@@ -22,7 +21,15 @@ export class CartService {
   }
 
   getCartById(): Observable<Cart> {
-    return this.httpClient.get<Cart>(this.endpoint + this.cartId)
+    return this.httpClient.get<Cart>(this.endpoint + this.getCartIdFromLocalStorage())
+      .pipe(
+        retry(1),
+        catchError(this.processError)
+      );
+  }
+
+  getCartByUserId(userId): Observable<Cart> {
+    return this.httpClient.get<Cart>(this.endpoint + "user/" + userId)
       .pipe(
         retry(1),
         catchError(this.processError)
@@ -31,7 +38,7 @@ export class CartService {
 
   addProductToCart(productId: string): Observable<Cart> {
     return this.httpClient.post<Cart>(this.endpoint + 'entry', {
-      "cartId": this.cartId,
+      "cartId": this.getCartIdFromLocalStorage(),
       "productId": productId,
       "quantity": 1
     }).pipe(
@@ -42,7 +49,7 @@ export class CartService {
 
   removeProductFromCart(productId: string): Observable<Cart> {
     return this.httpClient.put<Cart>(this.endpoint + 'entry', {
-      "cartId": this.cartId,
+      "cartId": this.getCartIdFromLocalStorage(),
       "productId": productId,
       "quantity": 1
     }).pipe(
@@ -60,6 +67,10 @@ export class CartService {
     }
     console.log(message);
     return throwError(message);
+  }
+
+  getCartIdFromLocalStorage() {
+    return localStorage.getItem("cartId");
   }
 
 }

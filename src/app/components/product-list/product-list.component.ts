@@ -26,7 +26,7 @@ export class ProductListComponent implements OnInit {
       console.log(routeParams);
       var categoryName = routeParams['categoryName'];
       if (categoryName == null || categoryName == undefined) {
-        categoryName = 'Phone';
+        categoryName = 'Cloth';
       }
       this.fetchProductCategoryByName(categoryName);
     });
