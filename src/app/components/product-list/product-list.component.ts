@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/product.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-product-list',
@@ -26,7 +27,7 @@ export class ProductListComponent implements OnInit {
       console.log(routeParams);
       var categoryName = routeParams['categoryName'];
       if (categoryName == null || categoryName == undefined) {
-        categoryName = 'Cloth';
+        categoryName =  environment.defaultCategory;
       }
       this.fetchProductCategoryByName(categoryName);
     });
