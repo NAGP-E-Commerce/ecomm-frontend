@@ -1,44 +1,19 @@
 <!-- Push down content on small screens -->
 <div *ngIf="productCategory">
-    <!-- <div class="therichpost-hide-large" style="margin-top:83px"></div> -->
-
-    <!-- Top header -->
-    <!-- <header class="therichpost-container therichpost-xlarge">
-        <p class="therichpost-left">{{productCategory.name}}</p>
-        <p class="therichpost-right">
-            <a href="javascript:void(0)" [routerLink]="['/cart']"><i
-                    class="fa fa-shopping-cart therichpost-margin-right"></i>
-            </a>
-            <i class="fa fa-search"></i>
-        </p>
-    </header> -->
-
-    <!-- Image header -->
-    <!-- <div class="therichpost-display-container therichpost-container">
-    <img src="assets/shopimages/jeans.jpg" alt="Jeans" style="width:100%">
-    <div class="therichpost-display-topleft therichpost-text-white" style="padding:24px 48px">
-        <h1 class="therichpost-jumbo therichpost-hide-small">New arrivals</h1>
-        <h1 class="therichpost-hide-large therichpost-hide-medium">New arrivals</h1>
-        <h1 class="therichpost-hide-small">COLLECTION 2016</h1>
-        <p><a href="#jeans"
-                class="therichpost-button therichpost-black therichpost-padding-large therichpost-large">SHOP
-                NOW</a></p>
-    </div>
-</div> -->
-
     <div class="therichpost-container therichpost-text-grey therichpost-large" id="jeans">
         <p>Size {{product.length}}</p>
     </div>
 
     <!-- Product grid -->
     <div class="therichpost-row therichpost-grayscale">
-        <div class="therichpost-col l3 s6" *ngFor="let product of product">
-            <div class="therichpost-container">
-                <img [src]="product.primaryImageUrl" style="width:100%">
+        <div class="therichpost-col l3 s6 p-2" *ngFor="let product of product">
+            <div>
+                <img [src]="product.primaryImageUrl" style="width: 200px;height: 300px;">
                 <span class="therichpost-tag therichpost-display-topleft" *ngIf="product.isNew">New</span>
                 <!-- <span class="therichpost-tag therichpost-display-topleft" *ngIf="product.isFeatured">Featured</span> -->
             </div>
-            <p>{{product.name}} - <b>#{{product.productId}}</b><br><b>Rs. {{product.price}}</b></p>
+            <p style="height: 50px;">{{product.name}} - <b>#{{product.productId}}</b><br></p>
+            <b>Rs. {{product.price}}</b>
             <div *ngIf="product.status == 'INSTOCK'">
                 <div class="therichpost-text-green"><b>In Stock</b></div>
             </div>
@@ -55,53 +30,8 @@
                 ng-disabled="product.status == 'UNAVAILABLE' || product.status == 'OUTOFSTOCK'"
                 (click)="addProductToCart(product.productId)">Add To Cart<i class="fa fa-cart"></i></button>
         </div>
-
-        <!-- <div class="therichpost-col l3 s6">
-        <div class="therichpost-container">
-            <div class="therichpost-display-container">
-                <img src="assets/shopimages/jeans2.jpg" style="width:100%">
-                <span class="therichpost-tag therichpost-display-topleft">New</span>
-                <div class="therichpost-display-middle therichpost-display-hover">
-                    <button class="therichpost-button therichpost-black">Buy now <i
-                            class="fa fa-cart"></i></button>
-                </div>
-            </div>
-            <p>Mega Ripped Jeans<br><b>$19.99</b></p>
-        </div>
-        <div class="therichpost-container">
-            <img src="assets/shopimages/jeans3.jpg" style="width:100%">
-            <p>Washed Skinny Jeans<br><b>$20.50</b></p>
-        </div>
     </div>
-
-    <div class="therichpost-col l3 s6">
-        <div class="therichpost-container">
-            <img src="assets/shopimages/jeans3.jpg" style="width:100%">
-            <p>Washed Skinny Jeans<br><b>$20.50</b></p>
-        </div>
-        <div class="therichpost-container">
-            <div class="therichpost-display-container">
-                <img src="assets/shopimages/jeans4.jpg" style="width:100%">
-                <span class="therichpost-tag therichpost-display-topleft">Sale</span>
-                <div class="therichpost-display-middle therichpost-display-hover">
-                    <button class="therichpost-button therichpost-black">Buy now <i
-                            class="fa fa-cart"></i></button>
-                </div>
-            </div>
-            <p>Vintage Skinny Jeans<br><b class="therichpost-text-red">$14.99</b></p>
-        </div>
-    </div>
-
-    <div class="therichpost-col l3 s6">
-        <div class="therichpost-container">
-            <img src="assets/shopimages/jeans4.jpg" style="width:100%">
-            <p>Vintage Skinny Jeans<br><b>$14.99</b></p>
-        </div>
-        <div class="therichpost-container">
-            <img src="assets/shopimages/jeans1.jpg" style="width:100%">
-            <p>Ripped Skinny Jeans<br><b>$24.99</b></p>
-        </div>
-    </div> -->
-    </div>
-
 </div>
+<br>
+<br>
+<br>
