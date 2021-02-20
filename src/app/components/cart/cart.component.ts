@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { ToastrService } from "ngx-toastr";
 import { OrderService } from "src/app/services/order.service";
+import { environment } from "src/environments/environment";
 import { CartService } from "../../services/cart.service";
 
 
@@ -42,7 +43,7 @@ export class CartComponent implements OnInit {
   }
 
   continueShopping() {
-    this.router.navigateByUrl('/category/Cloth');
+    this.router.navigateByUrl('/category/' + environment.defaultCategory);
   }
 
   placeOrder() {
