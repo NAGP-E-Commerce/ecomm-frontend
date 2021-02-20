@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 import { Cart } from '../models/Cart';
 
 @Injectable({
@@ -9,7 +10,7 @@ import { Cart } from '../models/Cart';
 })
 export class OrderService {
 
-  endpoint = 'http://localhost:8092/ct/order/';
+  endpoint = environment.orderServiceURL;
 
   constructor(private httpClient: HttpClient) { }
 

@@ -3,7 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  inventoryServiceURL: 'http://localhost:8091/im/inventory',
+  cartServiceURL: 'http://localhost:8092/ct/cart/',
+  productServiceURL: 'http://localhost:8090/',
+  orderServiceURL: 'http://localhost:8092/ct/order/',
+  anonymousUser: 'anonymous'
 };
 
 /*

@@ -4,13 +4,15 @@ import { retry, catchError } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ProductCategory } from '../models/ProductCategory';
+import { environment } from 'src/environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-  endpoint = 'http://localhost:8090/'
+  endpoint = environment.productServiceURL;
   constructor(private httpClient: HttpClient) { }
 
   httpHeader = {

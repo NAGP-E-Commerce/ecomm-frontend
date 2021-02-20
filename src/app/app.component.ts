@@ -2,6 +2,7 @@ import { Component, Inject, Injectable, AfterViewInit, ElementRef, ViewChild } f
 import { ProductService } from './services/product.service';
 import { CartService } from './services/cart.service';
 import { Cart } from './models/Cart';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +19,7 @@ export class AppComponent {
 
   ngOnInit(): void {
     this.fetchProductCategories();
-    this.getCartByUserId("anonymous")
+    this.getCartByUserId(environment.anonymousUser)
   }
 
   getCartByUserId(userId) {

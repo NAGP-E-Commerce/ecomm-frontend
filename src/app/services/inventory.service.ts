@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 import { Stock } from '../models/Stock';
 
 @Injectable({
@@ -9,7 +10,7 @@ import { Stock } from '../models/Stock';
 })
 export class InventoryService {
 
-  endpoint = 'http://localhost:8091/im/inventory';
+  endpoint = environment.inventoryServiceURL;
 
   constructor(private httpClient: HttpClient) { }
 

@@ -4,13 +4,14 @@ import { Cart } from "../models/Cart";
 import { retry, catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from "src/environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
 
-  endpoint = 'http://localhost:8092/ct/cart/';
+  endpoint = environment.cartServiceURL;
 
   constructor(private httpClient: HttpClient) { }
 
