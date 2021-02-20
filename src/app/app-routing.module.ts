@@ -10,9 +10,10 @@ import { AuthGuard } from './gaurds/auth.guard';
 
 const routes: Routes = [
   { 
-    path: 'inventory', component: InventoryComponent ,
-    canActivate: [AuthGuard],
-    data: { roles: ['ADMIN']}
+    path: 'inventory', component: InventoryComponent 
+    //,
+    //canActivate: [AuthGuard],
+    //data: { roles: ['ADMIN']}
   },
   { path: 'category/:categoryName', component: ProductListComponent },
   { path: 'cart', component: CartComponent },

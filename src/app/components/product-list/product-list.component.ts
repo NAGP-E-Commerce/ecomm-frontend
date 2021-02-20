@@ -4,8 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/product.service';
 import { ProductlistingService } from 'src/app/services/productlisting.service';
-import { SharedDataService } from 'src/app/services/sharedData.service';
-import { environment } from 'src/environments/environment';
+import { ShareDataService } from 'src/app/services/share-data.service';
 
 @Component({
   selector: 'app-product-list',
@@ -17,9 +16,7 @@ export class ProductListComponent implements OnInit {
   productCategory: any;
   product: any;
   products: any;
-  private selectedMessage:any = "";
-
-  @Input() searchText: any;
+  searchText: string = "";
 
   constructor(
     private route: ActivatedRoute,
@@ -27,7 +24,7 @@ export class ProductListComponent implements OnInit {
     private cartService: CartService,
     private toastrService: ToastrService,
     private productListingService: ProductlistingService ,
-    private sharedDataService: SharedDataService
+    private sharedDataService: ShareDataService
   ) { }
 
   ngOnInit(): void {
@@ -35,20 +32,28 @@ export class ProductListComponent implements OnInit {
       console.log(routeParams);
       var categoryName = routeParams['categoryName'];
       if (categoryName == null || categoryName == undefined) {
-        categoryName =  environment.defaultCategory;
+        categoryName = 'Cloth';
       }
       this.fetchProductCategoryByName(categoryName);
     }); */
 
+    /*this.sharedDataService.searchTextData.subscribe(text => {
+      this.searchText = text;
+      console.log("text product list: " + text);
+    }); */
+     
+    this.sharedDataService.getSearchText().subscribe(text => {
+      this.searchText = text;
       
-    if (this.selectedMessage != null && this.selectedMessage != "") {
-         this.sharedDataService.currentMessage.subscribe(message => (this.selectedMessage= message)); //<= Always get current value!
-         this.onSearchSubmit(this.selectedMessage);
-       } else {
-         this.productListingService.getAllProducts().subscribe((res: {}) => {
-         this.products = res;
-       })
-      }
+      if (this.searchText != null && this.searchText != "") {
+        this.onSearchSubmit(this.searchText);
+      } else {
+        this.productListingService.getAllProducts().subscribe((res: {}) => {
+        this.products = res;
+      })
+     } 
+    });
+
     }
 
   fetchProductCategoryByName(categoryName: string) {
@@ -73,7 +78,7 @@ export class ProductListComponent implements OnInit {
     this.productListingService.getSimilarProductByName(searchText).subscribe((res: {}) => {
       this.products = res;
    })
-    alert("this.products=>" + this.products)
+
   }
 
 }

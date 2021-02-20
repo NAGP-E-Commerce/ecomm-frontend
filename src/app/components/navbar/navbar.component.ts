@@ -1,6 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs/internal/Subscription';
 import { ProductlistingService } from 'src/app/services/productlisting.service';
-import { SharedDataService } from 'src/app/services/sharedData.service';
+import { ShareDataService } from 'src/app/services/share-data.service';
+
+
 
 @Component({
   selector: 'app-navbar',
@@ -13,19 +16,22 @@ export class NavbarComponent implements OnInit {
   @Input() cart = null;
   searchText: string = "";
   products: any;
+  subscription: Subscription;
 
   constructor(
     private productListingService: ProductlistingService,
-    private sharedDataService: SharedDataService
-
+    private sharedDataService: ShareDataService
   ) { }
 
   ngOnInit(): void {
+
      this.productListingService.getAllProducts().subscribe((res: {}) => {
        this.products = res;
       })
+      
+     this.sharedDataService.updateSearchText(this.searchText);
+     
    }
- 
 
   // Open and close sidebar
   therichpost_open() {
@@ -38,10 +44,9 @@ export class NavbarComponent implements OnInit {
     document.getElementById("myOverlay").style.display = "none";
   }
 
-  onSearchSubmit(data: any){
-    console.log("Searched value" + data.searchText);
-    this.sharedDataService.changeMessage(data.searchText);
+  onSearchSubmit(data: any) {
+    this.searchText = data.searchText;
+    this.sharedDataService.updateSearchText(this.searchText);
   }
-
 
 }
