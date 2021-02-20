@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { OrderService } from 'src/app/services/order.service';
 
 @Component({
   selector: 'app-order-list',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrderListComponent implements OnInit {
 
-  constructor() { }
+  orders: any = [];
+  constructor(private orderService: OrderService, private router: Router) { }
 
   ngOnInit(): void {
+    var userId = localStorage.getItem("userId");
+    this.getOrdersByUserId(userId);
   }
 
+  getOrdersByUserId(userId) {
+    return this.orderService.getOrdersByUserId(userId).subscribe((res: {}) => {
+      this.orders = res;
+    });
+  }
+
+  continueShopping() {
+    this.router.navigateByUrl('/category/Cloth');
+  }
 }

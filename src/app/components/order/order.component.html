@@ -3,7 +3,9 @@
         <div class="col-12 text-success">
             <br>
             <br>
-            <h3>Your Order has been placed successfully.</h3>
+            <div class="alert alert-success" role="alert">
+                <h4>Your Order has been placed successfully.</h4>
+            </div>
         </div>
     </div>
     <div class="row">
@@ -15,7 +17,7 @@
                         <tr>
                             <th scope="col"> </th>
                             <th scope="col">Product</th>
-                            <th scope="col">Available</th>
+                            <th scope="col">Code</th>
                             <th scope="col" class="text-center">Quantity</th>
                             <th scope="col" class="text-right">Price</th>
                             <th> </th>
@@ -25,7 +27,7 @@
                         <tr *ngFor="let entry of order.items">
                             <td><img [src]="entry.imageUrl" style="width: 50px;height: 50px;" /> </td>
                             <td>{{entry.productName}}</td>
-                            <td>In stock</td>
+                            <td><b>#{{entry.productId}}</b></td>
                             <td class="text-center">{{entry.quantity}}</td>
                             <td class="text-right">Rs. {{entry.price}}</td>
                             <td class="text-right"> </td>
@@ -78,7 +80,7 @@
                 <div class="col-sm-12  col-md-3"></div>
                 <div class="col-sm-12  col-md-3"></div>
                 <div class="col-sm-12 col-md-3 text-right">
-                    <button class="btn btn-block btn-success" (click)="continueShopping()">Continue Shopping</button>
+                    <button class="btn btn-outline-success" (click)="continueShopping()">Continue Shopping</button>
                 </div>
             </div>
         </div>

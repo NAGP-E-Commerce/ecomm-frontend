@@ -2,14 +2,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
-import { Cart } from '../models/Cart';
+import { Stock } from '../models/Stock';
 
 @Injectable({
   providedIn: 'root'
 })
-export class OrderService {
+export class InventoryService {
 
-  endpoint = 'http://localhost:8092/ct/order/';
+  endpoint = 'http://localhost:8091/im/api/ecommerce/inventory';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -19,15 +19,8 @@ export class OrderService {
     })
   }
 
-  placeOrder(cartId: string): Observable<Boolean> {
-    return this.httpClient.post<Boolean>(this.endpoint + 'create/' + cartId, null).pipe(
-      retry(1),
-      catchError(this.processError)
-    );
-  }
-
-  getOrdersByUserId(userId): Observable<Cart[]> {
-    return this.httpClient.get<Cart[]>(this.endpoint + "/" + userId)
+  getStocks(): Observable<Stock[]> {
+    return this.httpClient.get<Stock[]>(this.endpoint + "/all")
       .pipe(
         retry(1),
         catchError(this.processError)
@@ -44,5 +37,4 @@ export class OrderService {
     console.log(message);
     return throwError(message);
   }
-
 }

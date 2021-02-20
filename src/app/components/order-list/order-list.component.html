@@ -1,1 +1,32 @@
-<p>order-list works!</p>
+<div class="container mb-4" *ngIf="orders">
+    <div class="row">
+        <div class="col-12 text-success">
+            <br>
+            <br>
+            <h4>Your Orders</h4>
+        </div>
+    </div>
+
+    <div class="row card mt-2" *ngFor="let order of orders">
+        <div class="card-header">
+          Order {{order.id}}
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Total amount Rs. {{order.itemsTotal}}</h5>
+          <p class="card-text">
+            Shipping Charge Rs. {{order.tax}}
+          </p>
+          <a href="javascript:void(0)" [routerLink]="['/order', order.id]" class="btn btn-outline-primary">Details</a>
+        </div>
+    </div>
+
+    <div class="row mt-2">
+        <div class="col-sm-12  col-md-3"></div>
+        <div class="col-sm-12  col-md-3"></div>
+        <div class="col-sm-12  col-md-3"></div>
+        <div class="col-sm-12 col-md-3 text-right">
+            <button class="btn btn-outline-success" (click)="continueShopping()">Continue Shopping</button>
+        </div>
+    </div>
+
+</div>
