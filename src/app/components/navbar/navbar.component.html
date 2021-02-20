@@ -9,14 +9,17 @@
       <a href="javascript:void(0)" [routerLink]="['/orders']" class="btn btn-outline-secondary text-white mr-2">My Orders</a>
       <a href="javascript:void(0)" [routerLink]="['/inventory']" class="btn btn-outline-secondary text-white mr-2">Inventory</a>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-success my-2 my-sm-0 mr-2" type="submit">Search</button>
+    
+    <form #searchForm = "ngForm" class="form-inline my-2 my-lg-0" (ngSubmit) = "onSearchSubmit(searchForm.value)">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="searchText" ngModel>
+      <input class="btn btn-success my-2 my-sm-0 mr-2" type="submit" value="Search"/>
       <a href="javascript:void(0)" [routerLink]="['/cart']" class="text-dark"><i class="fa" style="font-size:24px">&#xf07a;</i>
       <span class='badge badge-warning' id='lblCartCount' *ngIf="cart"> {{cart.items.length}} </span></a>
     </form>
   </div>
 </nav>
+
+
 
 <!-- Sidebar/menu -->
 
@@ -50,3 +53,4 @@
 <!-- Overlay effect when opening sidebar on small screens -->
 <div class="therichpost-overlay therichpost-hide-large" (click)="therichpost_close()" style="cursor:pointer"
   title="close side menu" id="myOverlay"></div>
+
