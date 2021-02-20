@@ -10,7 +10,7 @@ import { ProductCategory } from '../models/ProductCategory';
 })
 export class ProductService {
 
-  endpoint = 'http://localhost:8090/api/ecommerce'
+  endpoint = 'http://localhost:8090/'
   constructor(private httpClient: HttpClient) { }
 
   httpHeader = {
@@ -20,7 +20,7 @@ export class ProductService {
   }
 
   getProductCategories(): Observable<ProductCategory> {
-    return this.httpClient.get<ProductCategory>(this.endpoint + '/productcategory')
+    return this.httpClient.get<ProductCategory>(this.endpoint + '/productcategory/')
       .pipe(
         retry(1),
         catchError(this.processError)

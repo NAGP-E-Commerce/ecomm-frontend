@@ -9,7 +9,7 @@ import { Stock } from '../models/Stock';
 })
 export class InventoryService {
 
-  endpoint = 'http://localhost:8091/im/api/ecommerce/inventory';
+  endpoint = 'http://localhost:8091/im/inventory';
 
   constructor(private httpClient: HttpClient) { }
 

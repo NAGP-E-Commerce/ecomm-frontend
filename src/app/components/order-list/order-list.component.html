@@ -14,7 +14,7 @@
         <div class="card-body">
           <h5 class="card-title">Total amount Rs. {{order.itemsTotal}}</h5>
           <p class="card-text">
-            Shipping Charge Rs. {{order.tax}}
+            Placed at {{order.time | date:'medium'}}
           </p>
           <a href="javascript:void(0)" [routerLink]="['/order', order.id]" class="btn btn-outline-primary">Details</a>
         </div>
