@@ -8,4 +8,4 @@ spec:
     targetPort: 80
   selector:
     app: angular
-  type: NodePort
+  type: LoadBalancer
