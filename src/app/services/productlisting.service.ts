@@ -4,13 +4,14 @@ import { retry, catchError } from 'rxjs/operators';
 import { BehaviorSubject, Observable, Subject, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Product } from '../models/Product';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductlistingService {
 
-  endpoint = 'http://localhost:9091/product';
+  endpoint = environment.productServiceURL;
 
   constructor(private httpClient: HttpClient) { }
 
@@ -21,7 +22,7 @@ export class ProductlistingService {
   }
 
   getAllProducts(): Observable<Product> {
-    return this.httpClient.get<Product>(this.endpoint + '/all')
+    return this.httpClient.get<Product>(this.endpoint + '/product/all')
       .pipe(
         retry(1),
         catchError(this.processError)
@@ -30,11 +31,11 @@ export class ProductlistingService {
 
   getSimilarProductByName(name: string): Observable<Product> {
     if (name != "") {
-        return this.httpClient.get<Product>(this.endpoint + '/name/' + name)
+      return this.httpClient.get<Product>(this.endpoint + '/name/' + name)
         .pipe(
-        retry(1),
-        catchError(this.processError)
-      )
+          retry(1),
+          catchError(this.processError)
+        )
     }
     else {
       return this.getAllProducts();
