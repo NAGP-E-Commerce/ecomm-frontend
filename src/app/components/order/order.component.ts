@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
+import { environment } from "src/environments/environment";
 import { CartService } from "../../services/cart.service";
 
 @Component({
@@ -33,6 +34,6 @@ export class OrderComponent implements OnInit {
   }
 
   continueShopping() {
-    this.router.navigateByUrl('/category/Cloth');
+    this.router.navigateByUrl('/category/' + environment.defaultCategory);
   }
 }

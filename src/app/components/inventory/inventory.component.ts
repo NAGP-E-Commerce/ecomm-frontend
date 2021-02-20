@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { InventoryService } from 'src/app/services/inventory.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-inventory',
@@ -23,7 +24,7 @@ export class InventoryComponent implements OnInit {
   }
 
   continueShopping() {
-    this.router.navigateByUrl('/category/Cloth');
+    this.router.navigateByUrl('/category/' + environment.defaultCategory);
   }
 
 }
