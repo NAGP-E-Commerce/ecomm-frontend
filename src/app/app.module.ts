@@ -38,14 +38,14 @@ import { AuthService } from './services/AuthService';
     BrowserAnimationsModule,
     ToastrModule.forRoot()
   ],
-  providers: [ 
+  providers: [  /*
     KeycloakService,
     {
       provide: APP_INITIALIZER,
       useFactory: initializer,
       multi: true,
       deps: [KeycloakService]
-    }, AuthService
+    }, AuthService */
   ],
   bootstrap: [AppComponent]
 })
