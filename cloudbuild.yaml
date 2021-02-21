@@ -1,8 +1,8 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/ecom-305510/ui', '.']
+  args: ['build', '-t', 'gcr.io/ecom-305510/frontend', '.']
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/ecom-305510/ui']
+  args: ['push', 'gcr.io/ecom-305510/frontend']
   #images: ['gcr.io/ecom-305510/test']
 #step 3
 - name: 'gcr.io/cloud-builders/kubectl'
@@ -17,14 +17,14 @@ steps:
    'image', 
    'deployment', 
    'app', 
-   'app=gcr.io/ecom-305510/ui'
+   'app=gcr.io/ecom-305510/frontend'
   ]
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=us-central1-c'
   - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-2'
 # push images to Google Container Registry with tags
 images: [
-   'gcr.io/ecom-305510/ui:latest'
+   'gcr.io/ecom-305510/frontend:latest'
   ]
 
 
