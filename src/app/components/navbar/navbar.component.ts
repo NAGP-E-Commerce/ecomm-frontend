@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs/internal/Subscription';
+import { AuthService } from 'src/app/services/AuthService';
 import { ProductlistingService } from 'src/app/services/productlisting.service';
 import { ShareDataService } from 'src/app/services/share-data.service';
+import { KeycloakService } from "keycloak-angular";
 
 
 
@@ -17,10 +19,14 @@ export class NavbarComponent implements OnInit {
   searchText: string = "";
   products: any;
   subscription: Subscription;
+  userName: string="";
+  isUserLoggedIn: boolean = false;
 
   constructor(
     private productListingService: ProductlistingService,
-    private sharedDataService: ShareDataService
+    private sharedDataService: ShareDataService,
+    private authService: AuthService,
+    private keycloakService: KeycloakService
   ) { }
 
   ngOnInit(): void {
@@ -30,6 +36,12 @@ export class NavbarComponent implements OnInit {
       })
       
      this.sharedDataService.updateSearchText(this.searchText);
+     let user: any = this.authService.getLoggedUser();
+     if ( user != null && user !=null) {
+       this.userName = user.preferred_username;
+       console.log("test user: " + this.userName);
+       this.isUserLoggedIn = true;
+     }
      
    }
 
@@ -47,6 +59,10 @@ export class NavbarComponent implements OnInit {
   onSearchSubmit(data: any) {
     this.searchText = data.searchText;
     this.sharedDataService.updateSearchText(this.searchText);
+  }
+
+  logout() {
+    this.keycloakService.logout();
   }
 
 }

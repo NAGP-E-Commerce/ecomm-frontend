@@ -1,12 +1,12 @@
 <!-- Push down content on small screens -->
 <div *ngIf="productCategory">
     <div class="therichpost-container therichpost-text-grey therichpost-large" id="jeans">
-        <p>Size {{product.length}}</p>
+        <p>Size {{products.length}}</p>
     </div>
 
     <!-- Product grid -->
     <div class="therichpost-row therichpost-grayscale">
-        <div class="therichpost-col l3 s6 p-2" *ngFor="let product of product">
+        <div class="therichpost-col l3 s6 p-2" *ngFor="let product of products">
             <div>
                 <img [src]="product.primaryImageUrl" style="width: 200px;height: 300px;">
                 <span class="therichpost-tag therichpost-display-topleft" *ngIf="product.isNew">New</span>

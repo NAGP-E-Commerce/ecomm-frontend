@@ -15,7 +15,6 @@ import { environment } from 'src/environments/environment';
 export class ProductListComponent implements OnInit {
 
   productCategory: any;
-  product: any;
   products: any;
   searchText: string = "";
 
@@ -35,10 +34,11 @@ export class ProductListComponent implements OnInit {
       if (categoryName == null || categoryName == undefined) {
         categoryName = environment.defaultCategory;
       }
-      this.fetchProductCategoryByName(categoryName);
+    this.fetchProductCategoryByName(categoryName);
+
     });
 
-    // this.getSearchText();
+     //this.getSearchText();
   }
 
   getSearchText() {
@@ -65,7 +65,7 @@ export class ProductListComponent implements OnInit {
   fetchProductCategoryByName(categoryName: string) {
     return this.productService.getProductCategoryByName(categoryName).subscribe((res: {}) => {
       this.productCategory = res;
-      this.product = this.productCategory.product;
+      this.products = this.productCategory.product;
     })
   }
 

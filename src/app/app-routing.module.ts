@@ -10,16 +10,32 @@ import { AuthGuard } from './gaurds/auth.guard';
 
 const routes: Routes = [
   { 
-    path: 'inventory', component: InventoryComponent 
-    //,
-    //canActivate: [AuthGuard],
-    //data: { roles: ['ADMIN']}
+    path: 'inventory', component: InventoryComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['USER']}
   },
-  { path: 'category/:categoryName', component: ProductListComponent },
-  { path: 'cart', component: CartComponent },
-  { path: 'order/:cartId', component: OrderComponent },
-  { path: 'orders', component: OrderListComponent },
-  { path: '**', component: ProductListComponent }
+  { path: 'category/:categoryName', component: ProductListComponent,
+  canActivate: [AuthGuard],
+  data: { roles: ['USER']}
+  },
+  {   
+      path: 'cart', component: CartComponent ,
+      canActivate: [AuthGuard],
+      data: { roles: ['USER']}
+  },
+  { 
+    path: 'order/:cartId', component: OrderComponent ,
+    canActivate: [AuthGuard],
+    data: { roles: ['USER']}
+  },
+  {
+     path: 'orders', component: OrderListComponent,
+     canActivate: [AuthGuard],
+     data: { roles: ['USER']} 
+  },
+  { 
+    path: '**', component: ProductListComponent
+  }
 ];
 
 @NgModule({

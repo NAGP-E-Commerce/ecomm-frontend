@@ -13,10 +13,24 @@
     <form #searchForm = "ngForm" class="form-inline my-2 my-lg-0" (ngSubmit) = "onSearchSubmit(searchForm.value)">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="searchText" ngModel>
       <input class="btn btn-success my-2 my-sm-0 mr-2" type="submit" value="Search"/>
-      <a href="javascript:void(0)" [routerLink]="['/cart']" class="text-dark"><i class="fa" style="font-size:24px">&#xf07a;</i>
+      <a href="javascript:void(0)" [routerLink]="['/cart']" class="text-dark"><i class="fa fa-lg" style="font-size:34px">&#xf07a;</i>
       <span class='badge badge-warning' id='lblCartCount' *ngIf="cart"> {{cart.items.length}} </span></a>
     </form>
   </div>
+  <div *ngIf="isUserLoggedIn" class="dropdown">
+     <a href="#" (click)="logout()"><i class="fa fa-user-secret" aria-hidden="true" style="font-size:34px"></i>
+      <div class="dropdown-content">
+        <a href="#">My account</a>
+        <a href="#">My orders</a>
+        <a href="#">Logout</a>
+      </div>
+    </a> &ensp;
+     <span id="userName">Hi {{userName | titlecase}}</span>
+  </div>
+  <div *ngIf="!isUserLoggedIn"> 
+    <i class="fa fa-user-circle-o" aria-hidden="true" style="font-size:34px"></i> &ensp;
+ </div>
+ 
 </nav>
 
 
@@ -53,4 +67,6 @@
 <!-- Overlay effect when opening sidebar on small screens -->
 <div class="therichpost-overlay therichpost-hide-large" (click)="therichpost_close()" style="cursor:pointer"
   title="close side menu" id="myOverlay"></div>
+
+
 
