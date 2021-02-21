@@ -15,8 +15,7 @@ steps:
   args: [
    'set', 
    'image', 
-   'deployment', 
-   'app', 
+   'deployment',
    'app=gcr.io/oceanic-craft-302516/angular'
   ]
   env:
