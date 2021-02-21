@@ -12,6 +12,7 @@ import { environment } from 'src/environments/environment';
 export class ProductlistingService {
 
   endpoint = environment.productServiceURL;
+  endpoint1 = environment.productListingServiceURL;
 
   constructor(private httpClient: HttpClient) { }
 
@@ -41,6 +42,37 @@ export class ProductlistingService {
       return this.getAllProducts();
     }
   }
+
+  
+  fetchAllProducts(): Observable<Product> {
+    return this.httpClient.get<Product>(this.endpoint1 + '/plp/all')
+      .pipe(
+        retry(1),
+        catchError(this.processError)
+      )
+  }
+
+  fetchProductCategoryByName(categoryCode :  string): Observable<Product> {
+    return this.httpClient.get<Product>(this.endpoint1 + '/plp/ccode/' + categoryCode)
+      .pipe(
+        retry(1),
+        catchError(this.processError)
+      )
+  }
+
+  fetchProductByName(name: string): Observable<Product> {
+    if (name != "") {
+      return this.httpClient.get<Product>(this.endpoint1 + 'plp/name/' + name)
+        .pipe(
+          retry(1),
+          catchError(this.processError)
+        )
+    }
+    else {
+      return this.getAllProducts();
+    }
+  }
+
 
   processError(err) {
     let message = '';

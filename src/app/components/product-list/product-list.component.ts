@@ -35,31 +35,33 @@ export class ProductListComponent implements OnInit {
       if (categoryName == null || categoryName == undefined) {
         categoryName = environment.defaultCategory;
       }
-      this.fetchProductCategoryByName(categoryName);
+      //this.fetchProductCategoryByName(categoryName);
+      this.getProductCategoryByName(categoryName);
     });
 
-    // this.getSearchText();
+     this.getSearchText();
   }
 
   getSearchText() {
-
-
-    /*this.sharedDataService.searchTextData.subscribe(text => {
-      this.searchText = text;
-      console.log("text product list: " + text);
-    }); */
-
     this.sharedDataService.getSearchText().subscribe(text => {
       this.searchText = text;
 
       if (this.searchText != null && this.searchText != "") {
         this.onSearchSubmit(this.searchText);
       } else {
-        this.productListingService.getAllProducts().subscribe((res: {}) => {
+        this.productListingService.fetchAllProducts().subscribe((res: {}) => {
           this.products = res;
         })
       }
     });
+  }
+
+
+  getProductCategoryByName(categoryId: string) {
+    return this.productListingService.fetchProductCategoryByName(categoryId).subscribe((res: {}) => {
+      this.productCategory = res;
+      this.product = this.productCategory.product;
+    })
   }
 
   fetchProductCategoryByName(categoryName: string) {
@@ -81,7 +83,7 @@ export class ProductListComponent implements OnInit {
   }
 
   onSearchSubmit(searchText: any) {
-    this.productListingService.getSimilarProductByName(searchText).subscribe((res: {}) => {
+    this.productListingService.fetchProductByName(searchText).subscribe((res: {}) => {
       this.products = res;
     })
 
