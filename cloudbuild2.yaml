@@ -1,24 +1,12 @@
 steps:
-#step 1
-- name: 'gcr.io/cloud-builders/docker' 
-  entrypoint: 'bash'
-  args: [
-   '-c', 
-   'docker pull gcr.io/oceanic-craft-302516/frontend:latest || exit 0'
-  ]
-#step 2
-- name: gcr.io/cloud-builders/docker
-  args: [
-   'build', 
-   '-t', 
-   'gcr.io/oceanic-craft-302516/frontend',
-   '-t', 
-   'gcr.io/oceanic-craft-302516/frontend:latest',
-   '.'
-  ]
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/oceanic-craft-302516/frontend', '.']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/oceanic-craft-302516/frontend']
+  #images: ['gcr.io/oceanic-craft-302516/test']
 #step 3
 - name: 'gcr.io/cloud-builders/kubectl'
-  args:  ['apply', '-f', 'deployment.yml']
+  args: ['apply', '-f', 'deployment.yml']
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=us-central1-c'
   - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-1'
@@ -36,41 +24,9 @@ steps:
   - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-1'
 # push images to Google Container Registry with tags
 images: [
-   'gcr.io/oceanic-craft-302516/frontend',
    'gcr.io/oceanic-craft-302516/frontend:latest'
   ]
 
-
-
-# steps:
-# - name: 'gcr.io/cloud-builders/docker'
-#   args: ['build', '-t', 'gcr.io/oceanic-craft-302516/frontend', '.']
-# - name: 'gcr.io/cloud-builders/docker'
-#   args: ['push', 'gcr.io/oceanic-craft-302516/frontend']
-#   #images: ['gcr.io/oceanic-craft-302516/test']
-# - name: 'gcr.io/cloud-builders/kubectl'
-#   args: [
-#    'set', 
-#    'image', 
-#    'deployment', 
-#    'app', 
-#    'app=gcr.io/oceanic-craft-302516/frontend'
-#   ]
-#   env:
-#   - 'CLOUDSDK_COMPUTE_ZONE=us-central1-c'
-#   - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-1'
-
-# #step 3
-# - name: 'gcr.io/cloud-builders/kubectl'
-#   args: ['apply', '-f', 'deployment.yml']
-#   env:
-#   - 'CLOUDSDK_COMPUTE_ZONE=us-central1-c'
-#   - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-1'
-# #step 4
-# # push images to Google Container Registry with tags
-# images: [
-#    'gcr.io/oceanic-craft-302516/frontend:latest'
-#   ]
 
 
 
