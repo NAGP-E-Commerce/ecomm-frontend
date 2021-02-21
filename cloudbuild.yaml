@@ -1,8 +1,8 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/oceanic-craft-302516/angular1', '.']
+  args: ['build', '-t', 'gcr.io/oceanic-craft-302516/angular', '.']
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/oceanic-craft-302516/angular1']
+  args: ['push', 'gcr.io/oceanic-craft-302516/angular']
   #images: ['gcr.io/oceanic-craft-302516/test']
 #step 3
 - name: 'gcr.io/cloud-builders/kubectl'
@@ -17,14 +17,14 @@ steps:
    'image', 
    'deployment', 
    'app', 
-   'app=gcr.io/oceanic-craft-302516/angular1'
+   'app=gcr.io/oceanic-craft-302516/angular'
   ]
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=us-central1-c'
   - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-1'
 # push images to Google Container Registry with tags
 images: [
-   'gcr.io/oceanic-craft-302516/angular1:latest'
+   'gcr.io/oceanic-craft-302516/angular:latest'
   ]
 
 
