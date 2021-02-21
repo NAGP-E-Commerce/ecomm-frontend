@@ -13,7 +13,7 @@ spec:
         app: frontend
     spec:
       containers:
-      - name: product
+      - name: frontend
         image: gcr.io/oceanic-craft-302516/frontend:latest
         ports:
         - containerPort: 80
