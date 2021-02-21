@@ -21,7 +21,6 @@ export const environment = {
     realm: 'AmkartEcomKeyCloak',
     url: 'http://104.155.223.84/auth'
     //url: 'http://localhost:8180/auth/'
-    url: 'http://localhost:8180/auth/'
   }
 };
 
