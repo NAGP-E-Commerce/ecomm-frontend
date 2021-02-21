@@ -25,7 +25,7 @@ isAccessAllowed(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Prom
       granted = true;
     } else {
       for (const requiredRole of requiredRoles) {
-        if (this.roles.indexOf(requiredRole) > -1) {
+        if (this.roles.indexOf(requiredRole.toLowerCase()) > -1) {
           granted = true;
           break;
         }

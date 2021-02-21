@@ -17,6 +17,8 @@ import { InventoryComponent } from './components/inventory/inventory.component';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { initializer } from 'src/AppInit';
 import { AuthService } from './services/AuthService';
+import { HomePageComponent } from './components/home-page/home-page.component';
+import { MyAccountComponent } from './components/my-account/my-account.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { AuthService } from './services/AuthService';
     CartComponent,
     OrderComponent,
     OrderListComponent,
-    InventoryComponent
+    InventoryComponent,
+    HomePageComponent,
+    MyAccountComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,14 +42,14 @@ import { AuthService } from './services/AuthService';
     BrowserAnimationsModule,
     ToastrModule.forRoot()
   ],
-  providers: [  /*
+  providers: [  
     KeycloakService,
     {
       provide: APP_INITIALIZER,
       useFactory: initializer,
       multi: true,
       deps: [KeycloakService]
-    }, AuthService */
+    }, AuthService 
   ],
   bootstrap: [AppComponent]
 })
