@@ -13,8 +13,8 @@ spec:
         app: frontend
     spec:
       containers:
-      - name: frontend
-        image: gcr.io/ecom-305510/frontend:latest
+      - name: product
+        image: gcr.io/oceanic-craft-302516/frontend:latest
         ports:
         - containerPort: 80
         imagePullPolicy: Always
