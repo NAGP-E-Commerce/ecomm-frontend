@@ -9,11 +9,8 @@ export class AuthService {
     getLoggedUser () {
         try {
             let userDetails = this.KeycloakService.getKeycloakInstance().idTokenParsed;
-            console.log('UserDetails', userDetails);
-            console.log('UserRoles', this.KeycloakService.getUserRoles());
             return userDetails;
         } catch (e) {
-            console.log('getLoggedUser Exception', e);
             return undefined;
         }
 
