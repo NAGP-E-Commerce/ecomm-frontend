@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: angular
+  name: frontend
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: angular
+      app: frontend
   template:
     metadata:
       labels:
-        app: angular
+        app: frontend
     spec:
       containers:
-      - name: angular
-        image: gcr.io/oceanic-craft-302516/angular:latest
+      - name: frontend
+        image: gcr.io/oceanic-craft-302516/frontend:latest
         ports:
         - containerPort: 80
         imagePullPolicy: Always

@@ -8,6 +8,12 @@ export const environment = {
   cartServiceURL: 'http://104.197.155.135/ct/cart/',
   productServiceURL: 'http://104.197.66.41/',
   orderServiceURL: 'http://104.197.155.135/ct/order/',
+
+  // inventoryServiceURL: 'http://35.193.47.77/inventory/im/inventory',
+  // cartServiceURL: 'http://35.193.47.77/cart/ct/cart/',
+  // productServiceURL: 'http://35.193.47.77/product/',
+  // orderServiceURL: 'http://35.193.47.77/cart/ct/order/',
+
   anonymousUser: 'anonymous',
   defaultCategory: 'Watch',
   keycloakConfig: {
@@ -15,6 +21,7 @@ export const environment = {
     realm: 'AmkartEcomKeyCloak',
     url: 'http://104.155.223.84/auth'
     //url: 'http://localhost:8180/auth/'
+    url: 'http://localhost:8180/auth/'
   }
 };
 
