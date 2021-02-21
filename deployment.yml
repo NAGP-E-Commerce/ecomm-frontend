@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: product
-        image: gcr.io/oceanic-craft-302516/frontend:latest
+        image: gcr.io/oceanic-craft-302516/frontend
         ports:
         - containerPort: 80
         imagePullPolicy: Always
