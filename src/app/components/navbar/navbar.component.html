@@ -4,8 +4,9 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+    <a class="navbar-brand therichpost-bar-item " [routerLink]="['/']">
     <img src="https://www.nagarro.com/hubfs/NagarroWebsiteRedesign-Aug2020/Assets/Images/Nagarro%20green%20logo%20with%20white%20title.svg" class="d-inline-block align-top mr-2" alt="">
-    <a class="navbar-brand therichpost-bar-item " href="#"><b></b></a>
+    </a>
   </div>
   <div>
       <form #searchForm = "ngForm" class="form-inline my-2 my-lg-0" (ngSubmit) = "onSearchSubmit(searchForm.value)">
@@ -16,11 +17,11 @@
       </form>
   </div>
   <div *ngIf="isUserLoggedIn" class="dropdown"> 
-    <a href="#" (click)="logout()"><i class="fa fa-user-secret" aria-hidden="true" style="font-size:34px"></i>  </a>
+    <a href="javascript:void(0)" (click)="logout()"><i class="fa fa-user-secret" aria-hidden="true" style="font-size:34px"></i>  </a>
       <div class="dropdown-content">
-        <a href="#" [routerLink]="['/orders']" >My Orders</a>
-        <a href="#" [routerLink]="['/inventory']">Inventory</a> 
-        <a href="#" (click)="logout()">Logout</a>
+        <a href="javascript:void(0)" [routerLink]="['/orders']" >My Orders</a>
+        <a href="javascript:void(0)" [routerLink]="['/inventory']">Inventory</a> 
+        <a href="javascript:void(0)" (click)="logout()">Logout</a>
       </div>
 
      <span id="userName">Hi {{userName | titlecase}} <i class="fa fa-caret-down"></i></span>
