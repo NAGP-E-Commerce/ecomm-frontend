@@ -32,16 +32,29 @@ export class ProductListComponent implements OnInit {
 
     this.route.params.subscribe(routeParams => {
       console.log(routeParams);
+      var categoryName = routeParams['categoryName'];
+      if (categoryName == null || categoryName == undefined) {
+        categoryName = environment.defaultCategory;
+      }
+    this.fetchProductCategoryByName(categoryName);
       this.categoryName = routeParams['categoryName'];
       if (this.categoryName != null && this.categoryName != "") {
-          // this.fetchProductCategoryByName(this.categoryName);
-          this.fetchProductCategoryByNameDB(this.categoryName);
+      this.fetchProductCategoryByName(this.categoryName);   
+    }
+  });
+
+    this.sharedDataService.getSearchText().subscribe(text => {
+      this.searchText = text;
+      if (this.searchText != null && this.searchText != "" ) {
+        this.categoryName == "";
+        this.onSearchSubmit(this.searchText);
+      } else if (this.categoryName == "") {
+        this.productListingService.getAllProducts().subscribe((res: {}) => {
+          this.products = res;
+        })
       }
-    });
-
-    this.getSearchText();
-
-  }
+  })
+}
 
   getSearchText() {
     this.sharedDataService.getSearchText().subscribe(text => {
