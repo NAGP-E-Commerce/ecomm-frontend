@@ -15,7 +15,7 @@
       </form>
   </div>
   <div *ngIf="isUserLoggedIn" class="dropdown"> 
-    <a href="#" (click)="logout()"><i class="fa fa-user-secret" aria-hidden="true" style="font-size:34px"></i>  </a>
+    <a href="#" ><i class="fa fa-user-secret" aria-hidden="true" style="font-size:34px"></i> </a>
       <div class="dropdown-content">
         <a href="#" [routerLink]="['/orders']" >My Orders</a>
         <a href="#" [routerLink]="['/inventory']">Inventory</a> 

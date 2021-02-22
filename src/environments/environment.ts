@@ -6,9 +6,9 @@ export const environment = {
   production: false,
   inventoryServiceURL: 'http://104.197.66.41/inventory/im/inventory',
   cartServiceURL: 'http://104.197.66.41/cart/ct/cart/',
-  productServiceURL: 'http://104.197.66.41/product/',
+  productServiceURL: 'http://104.197.66.41',
   orderServiceURL: 'http://104.197.66.41/cart/ct/order/',
-  productListingServiceURL: 'http://localhost:9091/',
+  productListingServiceURL: 'http://localhost:9091',
   anonymousUser: 'anonymous',
   defaultCategory: 'Watch',
   keycloakConfig: {
