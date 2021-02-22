@@ -4,6 +4,8 @@ export const environment = {
   cartServiceURL: 'http://104.197.155.135/ct/cart/',
   productServiceURL: 'http://104.197.66.41/',
   orderServiceURL: 'http://104.197.155.135/ct/order/',
+  productListingServiceURL: 'http://104.197.66.41/',
+
   // inventoryServiceURL: 'http://35.193.47.77/inventory/im/inventory',
   // cartServiceURL: 'http://35.193.47.77/cart/ct/cart/',
   // productServiceURL: 'http://35.193.47.77/product/',
@@ -14,7 +16,7 @@ export const environment = {
   keycloakConfig: {
     clientId: 'login-app',
     realm: 'AmkartEcomKeyCloak',
-    url: 'http://localhost:8180/auth/'
+    url: 'http://104.155.223.84/auth'
+    //url: 'http://localhost:8180/auth/'
   }
 };
-
