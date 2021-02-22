@@ -1,18 +1,17 @@
 import { Injectable } from '@angular/core';
 
 import { retry, catchError } from 'rxjs/operators';
-import { Observable, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { ProductCategory } from '../models/ProductCategory';
+import { Product } from '../models/Product';
 import { environment } from 'src/environments/environment';
-
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProductService {
+export class ProductlistingService {
 
-  endpoint = environment.productServiceURL;
+  endpoint = environment.productListingServiceURL;
 
   constructor(private httpClient: HttpClient) { }
 
@@ -22,20 +21,33 @@ export class ProductService {
     })
   }
 
-  getProductCategories(): Observable<ProductCategory> {
-    return this.httpClient.get<ProductCategory>(this.endpoint + '/productcategory/')
+  getAllProducts(): Observable<Product> {
+    return this.httpClient.get<Product>(this.endpoint + '/plp/all')
       .pipe(
         retry(1),
         catchError(this.processError)
       )
   }
 
-  getProductCategoryByName(name: string): Observable<ProductCategory> {
-    return this.httpClient.get<ProductCategory>(this.endpoint + '/productcategory/' + name)
+  getProductsByCategories(categoryCode: string): Observable<Product> {
+    return this.httpClient.get<Product>(this.endpoint + '/plp/ccode/' + categoryCode)
       .pipe(
         retry(1),
         catchError(this.processError)
       )
+  }
+
+  getSimilarProductByName(name: string): Observable<Product> {
+    if (name != "") {
+      return this.httpClient.get<Product>(this.endpoint + '/plp/name/' + name)
+        .pipe(
+          retry(1),
+          catchError(this.processError)
+        )
+    }
+    else {
+      return this.getAllProducts();
+    }
   }
 
   processError(err) {
@@ -48,4 +60,5 @@ export class ProductService {
     console.log(message);
     return throwError(message);
   }
+
 }

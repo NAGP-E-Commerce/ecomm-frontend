@@ -8,6 +8,7 @@ export const environment = {
   // cartServiceURL: 'http://35.193.47.77/cart/ct/cart/',
   // productServiceURL: 'http://35.193.47.77/product/',
   // orderServiceURL: 'http://35.193.47.77/cart/ct/order/',
+
   anonymousUser: 'anonymous',
   defaultCategory: 'Watch',
   keycloakConfig: {
