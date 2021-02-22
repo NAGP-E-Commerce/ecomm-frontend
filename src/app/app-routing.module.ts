@@ -37,6 +37,11 @@ const routes: Routes = [
      canActivate: [AuthGuard],
      data: { roles: ['USER']}
   },
+  {
+     path: 'home', component: HomePageComponent,
+     canActivate: [AuthGuard],
+     data: { roles: ['USER']} 
+  },
   { 
     path: '**', component: HomePageComponent,
   }
