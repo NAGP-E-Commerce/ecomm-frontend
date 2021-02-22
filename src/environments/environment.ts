@@ -8,7 +8,7 @@ export const environment = {
   cartServiceURL: 'http://104.197.155.135/ct/cart/',
   productServiceURL: 'http://104.197.66.41/',
   orderServiceURL: 'http://104.197.155.135/ct/order/',
-  productListingServiceURL: 'http://localhost:9091',
+  productListingServiceURL: 'http://104.197.66.41/',
 
   // inventoryServiceURL: 'http://35.193.47.77/inventory/im/inventory',
   // cartServiceURL: 'http://35.193.47.77/cart/ct/cart/',

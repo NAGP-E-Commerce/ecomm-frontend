@@ -23,27 +23,9 @@ html,body,h1,h2,h3,h4 {font-family:"Lato", sans-serif}
       <div class="w3-display-topleft w3-container w3-padding-32">
       </div>
     </div> 
-   <!-- <div  height="330px">
-      <img src="/assets/banner/2.jpg" height="330px" style="width:100%">
-      <div class="w3-display-middle w3-container w3-padding-32">
-      </div>
-    </div>
-    <div  height="330px">
-      <img src="/assets/banner/3.jpg" height="330px" style="width:100%">
-      <div class="w3-display-topright w3-container w3-padding-32">
-      </div>
-    </div>  -->
-
+   
     <!-- Slideshow next/previous buttons -->
     <div class="w3-container w3-dark-grey w3-padding w3-xlarge">
-      <!-- <div class="w3-left" onclick="plusDivs(-1)"><i class="fa fa-arrow-circle-left w3-hover-text-teal"></i></div>
-      <div class="w3-right" onclick="plusDivs(1)"><i class="fa fa-arrow-circle-right w3-hover-text-teal"></i></div> -->
-    
-      <!-- <div class="w3-center">
-        <span class="w3-tag demodots w3-border w3-transparent w3-hover-white" onclick="currentDiv(1)"></span>
-        <span class="w3-tag demodots w3-border w3-transparent w3-hover-white" onclick="currentDiv(2)"></span>
-        <span class="w3-tag demodots w3-border w3-transparent w3-hover-white" onclick="currentDiv(3)"></span>
-      </div> -->
     </div>
   </div>
   
@@ -60,26 +42,30 @@ html,body,h1,h2,h3,h4 {font-family:"Lato", sans-serif}
       </div>
     <div class="w3-third w3-margin-bottom">
       <ul class="w3-ul w3-border w3-center w3-hover-shadow">
-        <li class="w3-black w3-xlarge w3-padding-32">CLOTHES & SHOES</li>
+        <li class="w3-black w3-xlarge w3-padding-32">Cloth</li>
         <li class="w3-padding-16"><b>Environemnt</b> friendly</li>
         <li class="w3-padding-16"><b>Exclusive</b> range</li>
         <li class="w3-padding-16"><b>Latest</b> deals</li>
         <li class="w3-padding-16"><b>Great</b> brands</li>
         <li class="w3-light-grey w3-padding-24">
-          <button class="w3-button w3-green w3-padding-large">SHOP NOW</button>
+          <button class="w3-button w3-green w3-padding-large">
+            <a href="#" [routerLink]="['/category/Cloth']" >Shop Now</a>
+          </button>
         </li>
       </ul>
     </div>
 
     <div class="w3-third w3-margin-bottom">
       <ul class="w3-ul w3-border w3-center w3-hover-shadow">
-        <li class="w3-dark-grey w3-xlarge w3-padding-32">ELECTRONICS</li>
+        <li class="w3-dark-grey w3-xlarge w3-padding-32">Watch</li>
         <li class="w3-padding-16"><b>Great</b> brands</li>
         <li class="w3-padding-16"><b>Motorola</b> Escape</li>
         <li class="w3-padding-16"><b>Titan</b> Endless</li>
         <li class="w3-padding-16"><b>Timex</b> Gold</li>
         <li class="w3-light-grey w3-padding-24">
-          <button class="w3-button w3-green w3-padding-large">EXCLUSIVE RANGE</button>
+          <button class="w3-button w3-green w3-padding-large">
+            <a href="#" [routerLink]="['/category/Watch']" >Shop Now</a>
+          </button>
         </li>
       </ul>
     </div>
@@ -92,7 +78,9 @@ html,body,h1,h2,h3,h4 {font-family:"Lato", sans-serif}
         <li class="w3-padding-16"><b>Biographies of</b> famous people</li>
         <li class="w3-padding-16"><b>Book</b> Friendly</li>
         <li class="w3-light-grey w3-padding-24">
-          <button class="w3-button w3-green w3-padding-large">READ IT</button>
+          <button class="w3-button w3-green w3-padding-large">
+            <a href="#" [routerLink]="['/category/Book']" >Shop Now</a>
+          </button>
         </li>
       </ul>
     </div>

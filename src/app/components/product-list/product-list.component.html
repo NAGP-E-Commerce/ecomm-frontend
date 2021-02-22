@@ -1,5 +1,7 @@
 <!-- Push down content on small screens -->
 <div *ngIf="products" class="mt-4">
+    <br>
+    <br>
     <div class="therichpost-container therichpost-text-grey therichpost-large" id="jeans">
         <p>Size {{products.length}}</p>
     </div>
@@ -28,7 +30,7 @@
             </div>
             <button class="therichpost-button therichpost-black"
                 ng-disabled="product.status == 'UNAVAILABLE' || product.status == 'OUTOFSTOCK'"
-                (click)="addProductToCart(product.code)">Add To Cart<i class="fa fa-cart"></i></button>
+                (click)="addProductToCart(product.productId)">Add To Cart<i class="fa fa-cart"></i></button>
         </div>
     </div>
 </div>

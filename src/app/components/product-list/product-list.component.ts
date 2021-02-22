@@ -34,13 +34,19 @@ export class ProductListComponent implements OnInit {
       console.log(routeParams);
       this.categoryName = routeParams['categoryName'];
       if (this.categoryName != null && this.categoryName != "") {
-      this.fetchProductCategoryByName(this.categoryName);   
-    }
-  });
+          // this.fetchProductCategoryByName(this.categoryName);
+          this.fetchProductCategoryByNameDB(this.categoryName);
+      }
+    });
 
+    this.getSearchText();
+
+  }
+
+  getSearchText() {
     this.sharedDataService.getSearchText().subscribe(text => {
       this.searchText = text;
-      if (this.searchText != null && this.searchText != "" ) {
+      if (this.searchText != null && this.searchText != "") {
         this.categoryName == "";
         this.onSearchSubmit(this.searchText);
       } else if (this.categoryName == "") {
@@ -49,14 +55,6 @@ export class ProductListComponent implements OnInit {
         })
       }
     });
-
-  }
-
-  getSearchText() {
-    /*this.sharedDataService.searchTextData.subscribe(text => {
-      this.searchText = text;
-      console.log("text product list: " + text);
-    }); */
   }
 
   fetchProductCategoryByName(categoryName: string) {
@@ -64,6 +62,14 @@ export class ProductListComponent implements OnInit {
       //this.productCategory = res;
       //this.products = this.productCategory.product;
       this.products = res;
+    })
+  }
+
+  fetchProductCategoryByNameDB(categoryName: string) {
+    return this.productService.getProductCategoryByName(categoryName).subscribe((res: {}) => {
+      this.productCategory = res;
+      this.products = this.productCategory.product;
+      // this.products = res;
     })
   }
 
@@ -82,7 +88,5 @@ export class ProductListComponent implements OnInit {
     this.productListingService.getSimilarProductByName(searchText).subscribe((res: {}) => {
       this.products = res;
     })
-
   }
-
 }
