@@ -43,17 +43,7 @@ export class ProductListComponent implements OnInit {
     }
   });
 
-    this.sharedDataService.getSearchText().subscribe(text => {
-      this.searchText = text;
-      if (this.searchText != null && this.searchText != "" ) {
-        this.categoryName == "";
-        this.onSearchSubmit(this.searchText);
-      } else if (this.categoryName == "") {
-        this.productListingService.getAllProducts().subscribe((res: {}) => {
-          this.products = res;
-        })
-      }
-  })
+  this.getSearchText();
 }
 
   getSearchText() {
