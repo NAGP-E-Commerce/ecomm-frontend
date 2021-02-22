@@ -6,9 +6,9 @@ export const environment = {
   production: false,
   inventoryServiceURL: 'http://35.224.251.195/im/inventory',
   cartServiceURL: 'http://104.197.155.135/ct/cart/',
-  productServiceURL: 'http://10.8.8.109',
+  productServiceURL: 'http://10.4.0.64:8090',
   orderServiceURL: 'http://104.197.155.135/ct/order/',
-  productListingServiceURL: 'http://10.8.8.109',
+  productListingServiceURL: 'http://10.4.0.64:8090',
 
   // inventoryServiceURL: 'http://35.193.47.77/inventory/im/inventory',
   // cartServiceURL: 'http://35.193.47.77/cart/ct/cart/',
