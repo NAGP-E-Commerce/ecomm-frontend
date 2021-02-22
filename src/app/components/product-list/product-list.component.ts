@@ -16,7 +16,8 @@ export class ProductListComponent implements OnInit {
 
   productCategory: any;
   products: any;
-  searchText: string = "";
+  searchText: string = ""
+  categoryName: string = ""
 
   constructor(
     private route: ActivatedRoute,
@@ -28,44 +29,41 @@ export class ProductListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
     this.route.params.subscribe(routeParams => {
       console.log(routeParams);
-      var categoryName = routeParams['categoryName'];
-      if (categoryName == null || categoryName == undefined) {
-        categoryName = environment.defaultCategory;
-      }
-    this.fetchProductCategoryByName(categoryName);
-
-    });
-
-     //this.getSearchText();
-  }
-
-  getSearchText() {
-
-
-    /*this.sharedDataService.searchTextData.subscribe(text => {
-      this.searchText = text;
-      console.log("text product list: " + text);
-    }); */
+      this.categoryName = routeParams['categoryName'];
+      if (this.categoryName != null && this.categoryName != "") {
+      this.fetchProductCategoryByName(this.categoryName);   
+    }
+  });
 
     this.sharedDataService.getSearchText().subscribe(text => {
       this.searchText = text;
-
-      if (this.searchText != null && this.searchText != "") {
+      if (this.searchText != null && this.searchText != "" ) {
+        this.categoryName == "";
         this.onSearchSubmit(this.searchText);
-      } else {
+      } else if (this.categoryName == "") {
         this.productListingService.getAllProducts().subscribe((res: {}) => {
           this.products = res;
         })
       }
     });
+
+  }
+
+  getSearchText() {
+    /*this.sharedDataService.searchTextData.subscribe(text => {
+      this.searchText = text;
+      console.log("text product list: " + text);
+    }); */
   }
 
   fetchProductCategoryByName(categoryName: string) {
-    return this.productService.getProductCategoryByName(categoryName).subscribe((res: {}) => {
-      this.productCategory = res;
-      this.products = this.productCategory.product;
+    return this.productListingService.getProductsByCategories(categoryName).subscribe((res: {}) => {
+      //this.productCategory = res;
+      //this.products = this.productCategory.product;
+      this.products = res;
     })
   }
 

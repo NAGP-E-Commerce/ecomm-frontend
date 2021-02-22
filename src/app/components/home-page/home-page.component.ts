@@ -25,6 +25,7 @@ export class HomePageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    
     this.fetchProductCategoryByName()
   }
 
@@ -34,7 +35,6 @@ fetchProductCategoryByName() {
     this.productCategory = res;
     this.products = this.productCategory.product;
     this.products = this.products.slice(0,4);
-    console.log(this.products);
   })
 }
 

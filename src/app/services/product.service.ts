@@ -13,6 +13,7 @@ import { environment } from 'src/environments/environment';
 export class ProductService {
 
   endpoint = environment.productServiceURL;
+
   constructor(private httpClient: HttpClient) { }
 
   httpHeader = {

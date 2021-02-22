@@ -39,6 +39,7 @@ export class NavbarComponent implements OnInit {
       })
       
      this.sharedDataService.updateSearchText(this.searchText);
+
      let user = localStorage.getItem("userId");
      if ( user != null && user !=null) {
        this.userName = user;
@@ -82,7 +83,6 @@ export class NavbarComponent implements OnInit {
   logout() {
     this.keycloakService.logout();
     this.keycloakService.getKeycloakInstance().clearToken();
-    window.location.reload();
     localStorage.clear();
   }
 

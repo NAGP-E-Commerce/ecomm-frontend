@@ -24,15 +24,21 @@ const routes: Routes = [
   },
   {   
       path: 'cart', component: CartComponent ,
+      canActivate: [AuthGuard],
+      data: { roles: ['USER']}
   },
   { 
     path: 'order/:cartId', component: OrderComponent ,
+    canActivate: [AuthGuard],
+    data: { roles: ['USER']}
   },
   {
      path: 'orders', component: OrderListComponent,
+     canActivate: [AuthGuard],
+     data: { roles: ['USER']}
   },
   {
-     path: 'home', component: OrderListComponent,
+     path: 'home', component: HomePageComponent,
      canActivate: [AuthGuard],
      data: { roles: ['USER']} 
   },
