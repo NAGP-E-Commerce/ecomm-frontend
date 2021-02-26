@@ -3,7 +3,7 @@ export const environment = {
   inventoryServiceURL: 'http://35.239.68.145/inventory/im/inventory',
   cartServiceURL: 'http://35.239.68.145/cart/ct/cart/',
   productServiceURL: 'http://35.239.68.145/product/',
-  orderServiceURL: 'http://35.239.68.145/cart/ct/cart/',
+  orderServiceURL: 'http://35.239.68.145/cart/ct/order/',
   productListingServiceURL: 'http://35.239.68.145/product/',
 
   // inventoryServiceURL: 'http://35.193.47.77/inventory/im/inventory',
