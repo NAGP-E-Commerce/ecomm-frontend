@@ -1,10 +1,10 @@
 export const environment = {
   production: true,
-  inventoryServiceURL: 'http://104.198.43.159/im/inventory',
-  cartServiceURL: 'http://104.198.43.159/ct/cart/',
-  productServiceURL: 'http://104.198.43.159/',
-  orderServiceURL: 'http://104.198.43.159/ct/order/',
-  productListingServiceURL: 'http://104.198.43.159/',
+  inventoryServiceURL: 'http://35.239.68.145/im/inventory',
+  cartServiceURL: 'http://35.239.68.145/ct/cart/',
+  productServiceURL: 'http://35.239.68.145/product/',
+  orderServiceURL: 'http://35.239.68.145/ct/order/',
+  productListingServiceURL: 'http://35.239.68.145/product/',
 
   // inventoryServiceURL: 'http://35.193.47.77/inventory/im/inventory',
   // cartServiceURL: 'http://35.193.47.77/cart/ct/cart/',
