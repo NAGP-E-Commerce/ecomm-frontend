@@ -2,7 +2,7 @@ export const environment = {
   production: true,
   inventoryServiceURL: 'http://104.198.43.159/im/inventory',
   cartServiceURL: 'http://104.198.43.159/ct/cart/',
-  productServiceURL: 'http://104.198.43.159:31483/',
+  productServiceURL: 'http://104.198.43.159/',
   orderServiceURL: 'http://104.198.43.159/ct/order/',
   productListingServiceURL: 'http://104.198.43.159/',
 
